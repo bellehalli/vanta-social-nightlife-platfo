@@ -43,62 +43,120 @@
     <p class="page-hero-copy">See the section, capacity, minimum and deposit before you inquire. No mystery DM thread required.</p>
   </div>
 </section>
-<section class="page-section shell">
+<section class="page-section shell vip-map-section">
   <div class="page-section-head">
-    <div><p class="eyebrow gold">VIP Sections</p><h2>Choose Your Energy</h2></div>
-    <p>Compare the vibe, minimum and group size before you request a table.</p>
+    <div><p class="eyebrow gold">Interactive Floor Plan</p><h2>Choose Your Section</h2></div>
+    <p>Tap a highlighted section to compare its placement, capacity, deposit and minimum before you request it.</p>
   </div>
 
-  <div class="vip-selector-shell">
-    <div class="vip-selector-tabs" role="tablist" aria-label="VIP section selector">
-      <button class="vip-selector-tab active" type="button" role="tab" aria-selected="true" data-zone="main">Main Floor</button>
-      <button class="vip-selector-tab" type="button" role="tab" aria-selected="false" data-zone="vip">VIP Wall</button>
-      <button class="vip-selector-tab" type="button" role="tab" aria-selected="false" data-zone="center">Center Booth</button>
-      <button class="vip-selector-tab" type="button" role="tab" aria-selected="false" data-zone="dj">DJ Section</button>
-    </div>
-
-    <div class="vip-selector-grid">
-      <div class="vip-visual-card cinematic" aria-hidden="true">
-        <img class="vip-visual-image" src="vip-champagne-guests.JPG" width="612" height="406" loading="lazy" decoding="async" alt="">
-        <div class="vip-visual-shade"></div>
-        <div class="vip-visual-content">
-          <span class="vip-visual-kicker">The Main Room</span>
-          <strong>Close to<br>the energy.</strong>
-          <span data-selection-best>Casual celebrations</span>
-        </div>
+  <div class="vip-map-layout">
+    <div class="luxury-floorplan" aria-label="Interactive Vanta Social VIP floor plan">
+      <div class="floorplan-topline">
+        <span>Vanta Social</span>
+        <span>Not to scale · Concept layout</span>
       </div>
 
-      <aside class="vip-selection luxury">
-        <p class="eyebrow gold">Selected Section</p>
-        <h3 data-selection-name>Main Floor</h3>
-        <div class="vip-selection-price" data-selection-price>From $500</div>
-        <p data-selection-note>Closest to the main energy with quick bar access.</p>
-        <div class="vip-facts">
-          <div><span>Capacity</span><strong data-selection-capacity>4–6 guests</strong></div>
-          <div><span>Deposit</span><strong data-selection-deposit>$150</strong></div>
-          <div><span>Best For</span><strong data-selection-best>Casual celebrations</strong></div>
-        </div>
-        <a class="btn btn-gold" href="#reserve">Request This Section</a>
-      </aside>
+      <svg class="floorplan-svg" viewBox="0 0 820 560" role="group" aria-label="Venue floor plan">
+        <defs>
+          <linearGradient id="roomFade" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#111416"/>
+            <stop offset="100%" stop-color="#08090a"/>
+          </linearGradient>
+          <linearGradient id="goldFade" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#d7aa63" stop-opacity=".20"/>
+            <stop offset="100%" stop-color="#d7aa63" stop-opacity=".06"/>
+          </linearGradient>
+        </defs>
+
+        <!-- architectural shell -->
+        <path class="room-shell" d="M46 72 Q46 42 76 42 H744 Q774 42 774 72 V482 Q774 516 740 516 H80 Q46 516 46 482 Z"/>
+        <path class="inner-line" d="M68 94 H752 V464 H68 Z"/>
+
+        <!-- DJ / stage -->
+        <g class="floor-static">
+          <rect x="290" y="72" width="240" height="62" rx="8"/>
+          <text x="410" y="100" text-anchor="middle">DJ BOOTH</text>
+          <text x="410" y="119" text-anchor="middle" class="small">STAGE / PERFORMANCE</text>
+        </g>
+
+        <!-- bar -->
+        <g class="floor-static">
+          <rect x="240" y="456" width="340" height="38" rx="6"/>
+          <text x="410" y="480" text-anchor="middle">BAR + ENTRY</text>
+        </g>
+
+        <!-- dance floor -->
+        <g class="dance-floor">
+          <rect x="282" y="208" width="256" height="180" rx="92"/>
+          <text x="410" y="292" text-anchor="middle">DANCE FLOOR</text>
+          <text x="410" y="313" text-anchor="middle" class="small">CENTER ROOM</text>
+        </g>
+
+        <!-- interactive DJ section -->
+        <g class="floor-zone-svg" role="button" tabindex="0" data-zone="dj" aria-label="DJ Section, from $1,200">
+          <path d="M186 102 H270 V174 H144 Q126 174 132 156 L151 120 Q160 102 186 102 Z"/>
+          <circle cx="187" cy="140" r="19"/>
+          <circle cx="232" cy="140" r="19"/>
+          <text x="199" y="190" text-anchor="middle">DJ SECTION</text>
+        </g>
+
+        <!-- interactive VIP wall -->
+        <g class="floor-zone-svg" role="button" tabindex="0" data-zone="vip" aria-label="VIP Wall, from $750">
+          <path d="M609 135 Q694 135 712 183 V316 Q692 352 609 352 Z"/>
+          <rect x="631" y="168" width="54" height="46" rx="8"/>
+          <rect x="631" y="230" width="54" height="46" rx="8"/>
+          <rect x="631" y="292" width="54" height="36" rx="8"/>
+          <text x="656" y="374" text-anchor="middle">VIP WALL</text>
+        </g>
+
+        <!-- interactive center booth -->
+        <g class="floor-zone-svg" role="button" tabindex="0" data-zone="center" aria-label="Center Booth, from $950">
+          <path d="M151 235 Q195 205 245 231 V358 Q193 383 151 352 Z"/>
+          <rect x="171" y="263" width="52" height="64" rx="22"/>
+          <text x="198" y="382" text-anchor="middle">CENTER BOOTH</text>
+        </g>
+
+        <!-- interactive main floor -->
+        <g class="floor-zone-svg active" role="button" tabindex="0" data-zone="main" aria-label="Main Floor, from $500">
+          <path d="M260 399 H559 Q578 399 578 418 V441 H240 V418 Q240 399 260 399 Z"/>
+          <circle cx="304" cy="421" r="12"/>
+          <circle cx="358" cy="421" r="12"/>
+          <circle cx="462" cy="421" r="12"/>
+          <circle cx="516" cy="421" r="12"/>
+          <text x="409" y="383" text-anchor="middle">MAIN FLOOR TABLES</text>
+        </g>
+
+        <!-- room labels -->
+        <text x="103" y="463" class="room-label">RESTROOMS</text>
+        <text x="680" y="463" class="room-label">HOST</text>
+      </svg>
+
+      <div class="floorplan-legend" aria-label="Floor plan legend">
+        <span><i class="legend-dot selected"></i>Selectable VIP section</span>
+        <span><i class="legend-dot neutral"></i>Venue area</span>
+      </div>
     </div>
 
-    <div class="vip-option-grid">
-      <article class="vip-option-card">
-        <span class="action-index">01</span>
-        <h3>Birthday Night</h3>
-        <p>Best for 4–6 guests who want a home base without leaving the room’s main energy.</p>
-      </article>
-      <article class="vip-option-card">
-        <span class="action-index">02</span>
-        <h3>Girls’ Night</h3>
-        <p>Best for 6–8 guests who want a little more space, presentation and easy photo moments.</p>
-      </article>
-      <article class="vip-option-card">
-        <span class="action-index">03</span>
-        <h3>Big Celebration</h3>
-        <p>Best for 8–12 guests who want premium placement, stronger sightlines and a larger minimum.</p>
-      </article>
-    </div>
+    <aside class="vip-selection luxury interactive-panel" aria-live="polite">
+      <p class="eyebrow gold">Selected Section</p>
+      <h3 data-selection-name>Main Floor</h3>
+      <div class="vip-selection-price" data-selection-price>From $500</div>
+      <p data-selection-note>Closest to the main energy with quick bar access.</p>
+      <div class="vip-facts">
+        <div><span>Capacity</span><strong data-selection-capacity>4–6 guests</strong></div>
+        <div><span>Deposit</span><strong data-selection-deposit>$150</strong></div>
+        <div><span>Best For</span><strong data-selection-best>Casual celebrations</strong></div>
+      </div>
+      <a class="btn btn-gold" href="#reserve">Request This Section</a>
+      <p class="selection-hint">Tap another highlighted area on the map to compare sections.</p>
+    </aside>
+  </div>
+
+  <div class="vip-mobile-choices" aria-label="VIP section quick selector">
+    <button type="button" class="vip-selector-tab active" data-zone="main">Main Floor</button>
+    <button type="button" class="vip-selector-tab" data-zone="vip">VIP Wall</button>
+    <button type="button" class="vip-selector-tab" data-zone="center">Center Booth</button>
+    <button type="button" class="vip-selector-tab" data-zone="dj">DJ Section</button>
   </div>
 </section>
 <section class="page-section alt">

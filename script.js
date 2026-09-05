@@ -100,6 +100,7 @@ function selectZone(key){
     const isActive = z.dataset.zone === key;
     z.classList.toggle('active', isActive);
     if (z.matches('[role="tab"]')) z.setAttribute('aria-selected', String(isActive));
+    if (z.matches('.floor-zone-svg')) z.setAttribute('aria-pressed', String(isActive));
   });
   document.querySelectorAll('[data-selection-name]').forEach(el => el.textContent = info.name);
   document.querySelectorAll('[data-selection-price]').forEach(el => el.textContent = info.price);
@@ -109,5 +110,15 @@ function selectZone(key){
   document.querySelectorAll('[data-selection-note]').forEach(el => el.textContent = info.note);
   if(reservationSection) reservationSection.value = info.name;
 }
-zones.forEach(zone => zone.addEventListener('click', () => selectZone(zone.dataset.zone)));
+zones.forEach(zone => {
+  zone.addEventListener('click', () => selectZone(zone.dataset.zone));
+  if (zone.matches('.floor-zone-svg')) {
+    zone.addEventListener('keydown', event => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        selectZone(zone.dataset.zone);
+      }
+    });
+  }
+});
 if(zones.length) selectZone('main');
