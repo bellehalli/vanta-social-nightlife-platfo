@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="description" content="Interactive nightlife concierge demo for the fictional Vanta Social portfolio concept.">
+<title>Ask Vanta — Night Concierge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="site-header scrolled" data-header>
+  <a class="brand" href="index.html" aria-label="Vanta Social home"><span class="brand-word">VANTA</span><span class="brand-sub">SOCIAL</span></a>
+  <nav class="desktop-nav" aria-label="Primary">
+    <a href="events.html">Events</a><a href="vip.html">VIP</a><a href="guest-list.html">Guest List</a><a href="visit.html">Visit</a>
+  </nav>
+  <a class="btn btn-outline header-cta" href="vip.html">Reserve VIP</a>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" data-menu-toggle><span></span><span></span><span class="sr-only">Open menu</span></button>
+  <div id="mobile-menu" class="mobile-menu" data-mobile-menu>
+    <a href="events.html">Events</a><a href="vip.html">VIP</a><a href="guest-list.html">Guest List</a><a href="visit.html">Visit</a><a class="btn btn-gold" href="vip.html">Reserve VIP</a>
+  </div>
+</header>
+
+<main class="page-main">
+<section class="page-hero has-image">
+  <img class="page-hero-image" src="experience-club-interior.JPG" width="612" height="408" fetchpriority="high" decoding="async" alt="Dark upscale nightclub interior">
+  <div class="page-hero-shade"></div>
+  <div class="page-hero-content shell">
+    <div class="breadcrumb"><a href="index.html">Vanta</a><span>/</span><span>Ask Vanta</span></div>
+    <p class="eyebrow gold">Night Concierge</p>
+    <h1>Tell us the vibe.<br><span>We’ll route the night.</span></h1>
+    <p class="page-hero-copy">A lightweight recommendation experience that turns “what should we do?” into the right event, entry path and table option.</p>
+  </div>
+</section>
+
+<section class="page-section shell">
+  <div class="concierge-layout" data-concierge>
+    <form class="concierge-form" data-concierge-form>
+      <div class="concierge-step">
+        <span class="action-index">01</span>
+        <h3>What kind of night?</h3>
+        <div class="choice-grid">
+          <label class="choice-card"><input type="radio" name="vibe" value="rnb" checked><span>R&B + Hip-Hop</span></label>
+          <label class="choice-card"><input type="radio" name="vibe" value="global"><span>Afrobeats + Amapiano</span></label>
+          <label class="choice-card"><input type="radio" name="vibe" value="day"><span>Day Party</span></label>
+          <label class="choice-card"><input type="radio" name="vibe" value="open"><span>Open Format</span></label>
+        </div>
+      </div>
+
+      <div class="concierge-step">
+        <span class="action-index">02</span>
+        <h3>How many people?</h3>
+        <select name="group">
+          <option value="2">1–2 people</option>
+          <option value="4">3–4 people</option>
+          <option value="6">5–6 people</option>
+          <option value="8">7–8 people</option>
+          <option value="10">9–12 people</option>
+        </select>
+      </div>
+
+      <div class="concierge-step">
+        <span class="action-index">03</span>
+        <h3>What matters most?</h3>
+        <div class="choice-grid compact">
+          <label class="choice-card"><input type="radio" name="priority" value="dance" checked><span>Dance Floor</span></label>
+          <label class="choice-card"><input type="radio" name="priority" value="budget"><span>Budget</span></label>
+          <label class="choice-card"><input type="radio" name="priority" value="vip"><span>VIP / Celebration</span></label>
+          <label class="choice-card"><input type="radio" name="priority" value="early"><span>Easy Entry</span></label>
+        </div>
+      </div>
+
+      <button class="btn btn-gold" type="submit">Build My Night</button>
+    </form>
+
+    <aside class="concierge-result" aria-live="polite" data-concierge-result>
+      <p class="eyebrow gold">Your Vanta Route</p>
+      <h2 data-rec-title>Velvet Fridays</h2>
+      <p data-rec-copy>R&B, Hip-Hop and Afrobeats with the strongest dance-floor fit for your picks.</p>
+      <div class="recommendation-facts">
+        <div><span>Entry</span><strong data-rec-entry>Advance ticket</strong></div>
+        <div><span>Best Move</span><strong data-rec-move>Arrive before midnight</strong></div>
+        <div><span>Upgrade</span><strong data-rec-upgrade>Main Floor table</strong></div>
+      </div>
+      <div class="button-row">
+        <a class="btn btn-gold" href="velvet-fridays.html" data-rec-event>See Event</a>
+        <a class="btn btn-outline" href="vip.html" data-rec-vip>Compare VIP</a>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section class="page-section alt">
+  <div class="shell">
+    <div class="page-section-head"><div><p class="eyebrow gold">Premium Routing</p><h2>What This Solves</h2></div></div>
+    <div class="premium-grid">
+      <article class="premium-card"><span class="action-index">01</span><h3>Event Match</h3><p>Stops guests from bouncing between Instagram, ticket pages and promoter posts.</p></article>
+      <article class="premium-card"><span class="action-index">02</span><h3>Right Entry Path</h3><p>Routes guests to ticket, list or table based on their actual group and intent.</p></article>
+      <article class="premium-card"><span class="action-index">03</span><h3>Upsell Without Friction</h3><p>Surfaces VIP only when it fits the night instead of forcing it into every journey.</p></article>
+      <article class="premium-card"><span class="action-index">04</span><h3>Fewer DMs</h3><p>Puts the common “what should I book?” conversation directly on the site.</p></article>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="site-footer">
+  <div class="shell footer-top">
+    <a class="brand footer-brand" href="index.html"><span class="brand-word">VANTA</span><span class="brand-sub">SOCIAL</span></a>
+    <nav aria-label="Footer"><a href="events.html">Events</a><a href="vip.html">VIP</a><a href="guest-list.html">Guest List</a><a href="visit.html">Visit</a></nav>
+    <div class="socials" aria-label="Social links"><span aria-disabled="true">IG</span><span aria-disabled="true">TT</span><span aria-disabled="true">FB</span></div>
+  </div>
+  <div class="shell footer-bottom"><p>Portfolio concept. Vanta Social is a fictional nightlife brand.</p><span>© 2026 Vanta Social Concept</span></div>
+</footer>
+<div class="mobile-action-bar"><a href="events.html">Tickets</a><a href="vip.html">Reserve VIP</a></div>
+<div class="toast" role="status" aria-live="polite" data-toast>Demo only — no information was submitted.</div>
+<script src="script.js"></script>
+</body></html>

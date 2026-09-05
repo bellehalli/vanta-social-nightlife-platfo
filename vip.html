@@ -170,6 +170,74 @@
     <p class="notice" style="margin-top:16px">Concept pricing only. A real venue would connect this interface to its live inventory, booking policy and payment/deposit system.</p>
   </div>
 </section>
+
+<section class="page-section shell">
+  <div class="page-section-head">
+    <div><p class="eyebrow gold">Bottle Menu</p><h2>Build Your Table</h2></div>
+    <p>Browse a sample premium bottle list, then use the table builder to estimate a package before you inquire.</p>
+  </div>
+
+  <div class="bottle-layout">
+    <div class="bottle-menu">
+      <div class="bottle-category">
+        <div class="bottle-category-head"><span>Vodka</span><span>750ml</span></div>
+        <button class="bottle-row" type="button" data-bottle="Tito's Handmade Vodka" data-price="325"><span>Tito's Handmade Vodka</span><strong>$325</strong></button>
+        <button class="bottle-row" type="button" data-bottle="Grey Goose" data-price="375"><span>Grey Goose</span><strong>$375</strong></button>
+        <button class="bottle-row" type="button" data-bottle="Cîroc" data-price="400"><span>Cîroc</span><strong>$400</strong></button>
+      </div>
+
+      <div class="bottle-category">
+        <div class="bottle-category-head"><span>Tequila</span><span>750ml</span></div>
+        <button class="bottle-row popular" type="button" data-bottle="Don Julio 1942" data-price="650"><span>Don Julio 1942 <em>Popular</em></span><strong>$650</strong></button>
+        <button class="bottle-row" type="button" data-bottle="Casamigos Reposado" data-price="425"><span>Casamigos Reposado</span><strong>$425</strong></button>
+        <button class="bottle-row" type="button" data-bottle="Clase Azul Reposado" data-price="900"><span>Clase Azul Reposado</span><strong>$900</strong></button>
+      </div>
+
+      <div class="bottle-category">
+        <div class="bottle-category-head"><span>Champagne</span><span>750ml</span></div>
+        <button class="bottle-row" type="button" data-bottle="Moët & Chandon" data-price="350"><span>Moët & Chandon</span><strong>$350</strong></button>
+        <button class="bottle-row" type="button" data-bottle="Veuve Clicquot" data-price="425"><span>Veuve Clicquot</span><strong>$425</strong></button>
+        <button class="bottle-row" type="button" data-bottle="Ace of Spades Brut" data-price="950"><span>Ace of Spades Brut</span><strong>$950</strong></button>
+      </div>
+
+      <div class="bottle-category">
+        <div class="bottle-category-head"><span>Cognac</span><span>750ml</span></div>
+        <button class="bottle-row" type="button" data-bottle="D'Ussé VSOP" data-price="425"><span>D'Ussé VSOP</span><strong>$425</strong></button>
+        <button class="bottle-row" type="button" data-bottle="Hennessy VSOP" data-price="475"><span>Hennessy VSOP</span><strong>$475</strong></button>
+      </div>
+    </div>
+
+    <aside class="bottle-builder">
+      <p class="eyebrow gold">Table Builder</p>
+      <h3>Your Bottle List</h3>
+      <div class="builder-items" data-builder-items>
+        <p class="builder-empty">Tap bottles to add them here.</p>
+      </div>
+      <div class="builder-summary">
+        <div><span>Bottles</span><strong data-builder-count>0</strong></div>
+        <div><span>Estimated Bottle Total</span><strong data-builder-total>$0</strong></div>
+      </div>
+      <p class="builder-note">Concept pricing only. Taxes, gratuity, service charge and section minimums are not included.</p>
+      <button class="btn btn-gold" type="button" data-builder-to-form disabled>Add to Reservation</button>
+    </aside>
+  </div>
+</section>
+
+<section class="page-section alt">
+  <div class="shell">
+    <div class="page-section-head">
+      <div><p class="eyebrow gold">Premium Add-Ons</p><h2>Make It A Moment</h2></div>
+      <p>Upsells are built into the experience without cluttering the main conversion flow.</p>
+    </div>
+    <div class="premium-grid">
+      <article class="premium-card"><span class="badge">Birthday</span><h3>Birthday Moment</h3><p>Custom sign presentation, sparkler service and birthday announcement.</p><strong>+$125</strong></article>
+      <article class="premium-card"><span class="badge">Arrival</span><h3>Champagne Welcome</h3><p>Chilled champagne waiting at the table when the group arrives.</p><strong>+$175</strong></article>
+      <article class="premium-card"><span class="badge">Content</span><h3>VIP Photo Moment</h3><p>Reserved photo window with branded backdrop and group portrait moment.</p><strong>+$95</strong></article>
+      <article class="premium-card"><span class="badge">Priority</span><h3>Priority Entry</h3><p>Dedicated host check-in for the full confirmed table party.</p><strong>Included*</strong></article>
+    </div>
+  </div>
+</section>
+
 <section id="reserve" class="page-section shell">
   <div class="page-section-head"><div><p class="eyebrow gold">Reservation Request</p><h2>Start Your Table</h2></div><p>This form demonstrates qualification before a venue team follows up.</p></div>
   <div class="form-shell">
@@ -180,7 +248,10 @@
     <label><span>Event</span><select name="event" required><option>Velvet Fridays — Sep 11</option><option>Global Frequency — Sep 18</option><option>Future Date / Other</option></select></label>
     <label><span>Preferred Section</span><select name="section" data-reservation-section><option>Main Floor</option><option>VIP Wall</option><option>Center Booth</option><option>DJ Section</option></select></label>
     <label><span>Group Size</span><input type="number" name="guests" min="2" max="20" value="6" required></label>
-    <label class="full"><span>Celebration / Notes</span><textarea name="notes" placeholder="Birthday, bachelorette, special request, bottle preference..."></textarea></label>
+    <label><span>Estimated Budget</span><select name="budget"><option>$500–$749</option><option>$750–$999</option><option>$1,000–$1,499</option><option>$1,500–$2,499</option><option>$2,500+</option></select></label>
+    <label><span>Occasion</span><select name="occasion"><option>Just Going Out</option><option>Birthday</option><option>Bachelorette</option><option>Anniversary</option><option>Corporate / Client</option><option>Other</option></select></label>
+    <label class="full"><span>Requested Bottles</span><textarea name="bottles" data-reservation-bottles placeholder="Use the bottle builder above or type your preferences here."></textarea></label>
+    <label class="full"><span>Celebration / Notes</span><textarea name="notes" placeholder="Birthday name, special request, arrival notes..."></textarea></label>
     <button class="btn btn-gold full" type="submit">Send Demo Request</button>
     <small class="full">Portfolio demo only. Information is not transmitted or stored.</small>
   </form>

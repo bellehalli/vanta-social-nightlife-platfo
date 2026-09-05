@@ -122,3 +122,210 @@ zones.forEach(zone => {
   }
 });
 if(zones.length) selectZone('main');
+
+
+// =========================================================
+// Sellable premium systems: calendar, bottle builder,
+// Ask Vanta concierge
+// =========================================================
+
+// Functional event calendar
+const calendarRoot = document.querySelector('[data-calendar]');
+if (calendarRoot) {
+  const eventData = {
+    '2026-09-05': [{title:'After Hours', time:'10 PM', href:'after-hours.html', vibe:'Hip-Hop · Open Format'}],
+    '2026-09-06': [{title:'Sunday Service', time:'4 PM', href:'sunday-service.html', vibe:'Day Party · R&B'}],
+    '2026-09-11': [{title:'Velvet Fridays', time:'10 PM', href:'velvet-fridays.html', vibe:'R&B · Hip-Hop · Afrobeats'}],
+    '2026-09-18': [{title:'Global Frequency', time:'10 PM', href:'global-frequency.html', vibe:'Afrobeats · Amapiano'}]
+  };
+
+  let calendarDate = new Date(Date.UTC(2026, 8, 1));
+  let selectedDate = '2026-09-05';
+  const grid = calendarRoot.querySelector('[data-cal-grid]');
+  const label = calendarRoot.querySelector('[data-cal-label]');
+  const dateLabel = calendarRoot.querySelector('[data-cal-date]');
+  const results = calendarRoot.querySelector('[data-cal-results]');
+  const prev = calendarRoot.querySelector('[data-cal-prev]');
+  const next = calendarRoot.querySelector('[data-cal-next]');
+  const monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+
+  const isoDate = (y,m,d) => `${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+
+  function renderCalendarResults(key) {
+    const [y,m,d] = key.split('-').map(Number);
+    if (dateLabel) dateLabel.textContent = `${monthNames[m-1]} ${d}`;
+    const items = eventData[key] || [];
+    if (!results) return;
+    if (!items.length) {
+      results.innerHTML = '<p class="muted">No listed Vanta event on this date. Choose another highlighted date.</p>';
+      return;
+    }
+    results.innerHTML = items.map(item => `
+      <div class="cal-event-result">
+        <div><strong>${item.title}</strong><br><span>${item.time} · ${item.vibe}</span></div>
+        <a href="${item.href}">View event →</a>
+      </div>`).join('');
+  }
+
+  function renderCalendar() {
+    const y = calendarDate.getUTCFullYear();
+    const m = calendarDate.getUTCMonth();
+    if (label) label.textContent = `${monthNames[m]} ${y}`;
+    if (!grid) return;
+    grid.innerHTML = '';
+
+    const firstDay = new Date(Date.UTC(y,m,1)).getUTCDay();
+    const daysInMonth = new Date(Date.UTC(y,m+1,0)).getUTCDate();
+    const prevDays = new Date(Date.UTC(y,m,0)).getUTCDate();
+
+    for (let cell=0; cell<42; cell++) {
+      let day, cellMonth=m, cellYear=y, outside=false;
+      if (cell < firstDay) {
+        day = prevDays - firstDay + cell + 1;
+        cellMonth = m - 1;
+        if (cellMonth < 0) { cellMonth = 11; cellYear--; }
+        outside = true;
+      } else if (cell >= firstDay + daysInMonth) {
+        day = cell - firstDay - daysInMonth + 1;
+        cellMonth = m + 1;
+        if (cellMonth > 11) { cellMonth = 0; cellYear++; }
+        outside = true;
+      } else {
+        day = cell - firstDay + 1;
+      }
+
+      const key = isoDate(cellYear,cellMonth,day);
+      const events = eventData[key] || [];
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = `calendar-day${outside ? ' outside' : ''}${events.length ? ' has-event' : ''}${key === selectedDate ? ' selected' : ''}`;
+      btn.disabled = outside;
+      btn.setAttribute('aria-label', `${monthNames[cellMonth]} ${day}${events.length ? `, ${events.length} event` : ''}`);
+      btn.innerHTML = `<span class="calendar-day-number">${day}</span>${events.length ? '<i class="calendar-dot"></i><span class="calendar-event-count">'+events.length+' event</span>' : ''}`;
+      if (!outside) {
+        btn.addEventListener('click', () => {
+          selectedDate = key;
+          renderCalendar();
+          renderCalendarResults(key);
+        });
+      }
+      grid.appendChild(btn);
+    }
+  }
+
+  prev?.addEventListener('click', () => {
+    calendarDate = new Date(Date.UTC(calendarDate.getUTCFullYear(), calendarDate.getUTCMonth()-1, 1));
+    renderCalendar();
+  });
+  next?.addEventListener('click', () => {
+    calendarDate = new Date(Date.UTC(calendarDate.getUTCFullYear(), calendarDate.getUTCMonth()+1, 1));
+    renderCalendar();
+  });
+
+  renderCalendar();
+  renderCalendarResults(selectedDate);
+}
+
+// Bottle builder
+const bottleButtons = [...document.querySelectorAll('[data-bottle]')];
+const builderItems = document.querySelector('[data-builder-items]');
+const builderCount = document.querySelector('[data-builder-count]');
+const builderTotal = document.querySelector('[data-builder-total]');
+const builderToForm = document.querySelector('[data-builder-to-form]');
+const bottleField = document.querySelector('[data-reservation-bottles]');
+const selectedBottles = new Map();
+
+function renderBottleBuilder() {
+  if (!builderItems) return;
+  const entries = [...selectedBottles.entries()];
+  const count = entries.reduce((sum,[,item]) => sum + item.qty, 0);
+  const total = entries.reduce((sum,[,item]) => sum + item.qty * item.price, 0);
+
+  if (!entries.length) {
+    builderItems.innerHTML = '<p class="builder-empty">Tap bottles to add them here.</p>';
+  } else {
+    builderItems.innerHTML = entries.map(([name,item]) => `
+      <div class="builder-item">
+        <span>${item.qty}× ${name}</span>
+        <strong>$${(item.qty*item.price).toLocaleString()}</strong>
+        <button type="button" data-remove-bottle="${name}" aria-label="Remove one ${name}">×</button>
+      </div>`).join('');
+  }
+
+  if (builderCount) builderCount.textContent = String(count);
+  if (builderTotal) builderTotal.textContent = `$${total.toLocaleString()}`;
+  if (builderToForm) builderToForm.disabled = count === 0;
+
+  document.querySelectorAll('[data-remove-bottle]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const name = btn.dataset.removeBottle;
+      const item = selectedBottles.get(name);
+      if (!item) return;
+      item.qty -= 1;
+      if (item.qty <= 0) selectedBottles.delete(name);
+      renderBottleBuilder();
+    });
+  });
+}
+
+bottleButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const name = btn.dataset.bottle;
+    const price = Number(btn.dataset.price || 0);
+    const current = selectedBottles.get(name) || {qty:0, price};
+    current.qty += 1;
+    selectedBottles.set(name, current);
+    btn.classList.add('added');
+    renderBottleBuilder();
+  });
+});
+
+builderToForm?.addEventListener('click', () => {
+  const summary = [...selectedBottles.entries()].map(([name,item]) => `${item.qty}× ${name}`).join(', ');
+  if (bottleField) bottleField.value = summary;
+  document.querySelector('#reserve')?.scrollIntoView({behavior:'smooth', block:'start'});
+  bottleField?.focus();
+});
+renderBottleBuilder();
+
+// Ask Vanta concierge
+const conciergeForm = document.querySelector('[data-concierge-form]');
+if (conciergeForm) {
+  const title = document.querySelector('[data-rec-title]');
+  const copy = document.querySelector('[data-rec-copy]');
+  const entry = document.querySelector('[data-rec-entry]');
+  const move = document.querySelector('[data-rec-move]');
+  const upgrade = document.querySelector('[data-rec-upgrade]');
+  const eventLink = document.querySelector('[data-rec-event]');
+
+  const recommendationMap = {
+    rnb:{title:'Velvet Fridays',copy:'R&B, Hip-Hop and Afrobeats with the strongest dance-floor fit for your picks.',entry:'Advance ticket',move:'Arrive before midnight',href:'velvet-fridays.html'},
+    global:{title:'Global Frequency',copy:'Afrobeats and Amapiano with a high-energy global room.',entry:'Advance ticket',move:'Arrive by 11:30 PM',href:'global-frequency.html'},
+    day:{title:'Sunday Service',copy:'A daytime party with R&B, cocktails and an earlier start.',entry:'Guest list or advance',move:'Arrive before 6 PM',href:'sunday-service.html'},
+    open:{title:'After Hours',copy:'Hip-Hop and open-format records for a faster late-night room.',entry:'Anytime ticket',move:'Arrive before midnight',href:'after-hours.html'}
+  };
+
+  conciergeForm.addEventListener('submit', event => {
+    event.preventDefault();
+    const fd = new FormData(conciergeForm);
+    const vibe = String(fd.get('vibe') || 'rnb');
+    const group = Number(fd.get('group') || 2);
+    const priority = String(fd.get('priority') || 'dance');
+    const rec = recommendationMap[vibe] || recommendationMap.rnb;
+
+    let entryText = rec.entry;
+    let moveText = rec.move;
+    let upgradeText = group >= 7 ? 'VIP Wall or Center Booth' : group >= 5 ? 'Main Floor table' : 'Optional table upgrade';
+
+    if (priority === 'budget') { entryText = 'Guest list / early release'; moveText = 'Use early-entry cutoff'; }
+    if (priority === 'vip') { upgradeText = group >= 9 ? 'DJ Section' : group >= 7 ? 'Center Booth' : 'VIP Wall'; }
+    if (priority === 'early') { moveText = 'Arrive during first hour'; entryText = 'Guest list'; }
+
+    if (title) title.textContent = rec.title;
+    if (copy) copy.textContent = rec.copy;
+    if (entry) entry.textContent = entryText;
+    if (move) move.textContent = moveText;
+    if (upgrade) upgrade.textContent = upgradeText;
+    if (eventLink) eventLink.href = rec.href;
+  });
+}

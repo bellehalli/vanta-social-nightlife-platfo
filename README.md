@@ -34,3 +34,16 @@ Forms and demo checkout controls do not transmit or store information.
 ## Deployment
 Static site: deploy repository root on Vercel with Framework Preset `Other`.
 No build command or output directory is required.
+
+
+## Premium Systems Added
+- Functional nightlife calendar with clickable event dates
+- Event filters and dedicated detail pages
+- Interactive VIP floorplan
+- Full bottle list and bottle builder
+- Table minimums, deposits, package estimates
+- Premium celebration add-ons
+- Ask Vanta nightlife concierge / recommendation flow
+- Guest list, birthday and Insider capture
+- VIP reservation qualification form
+- Venue policies, parking and FAQ

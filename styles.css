@@ -521,3 +521,101 @@ section[id]{scroll-margin-top:88px}
   .vip-mobile-choices{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
   .vip-mobile-choices .vip-selector-tab{width:100%;min-height:46px}
 }
+
+
+/* =========================================================
+   SELLABLE PREMIUM SYSTEMS — calendar, bottle builder,
+   concierge, premium upsells
+   ========================================================= */
+
+/* Calendar */
+.calendar-shell{border:1px solid var(--line);background:#07090a;padding:22px}
+.calendar-toolbar{display:flex;align-items:center;justify-content:space-between;gap:18px;padding-bottom:18px;border-bottom:1px solid var(--line)}
+.calendar-toolbar>div{text-align:center;display:grid;gap:4px}
+.calendar-month-label{font-family:'Montserrat';font-size:22px;text-transform:uppercase;letter-spacing:.04em}
+.calendar-sub{font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
+.calendar-nav-btn{width:44px;height:44px;border:1px solid #34373a;background:#090b0c;color:var(--gold-2);cursor:pointer}
+.calendar-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px}
+.calendar-weekdays{padding:18px 0 8px}
+.calendar-weekdays span{text-align:center;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#7f817e}
+.calendar-day{position:relative;min-height:78px;border:1px solid #24272a;background:#090b0c;color:#c7c4bd;padding:10px;text-align:left;cursor:pointer}
+.calendar-day:hover,.calendar-day:focus-visible{border-color:#615039}
+.calendar-day.outside{opacity:.28;cursor:default}
+.calendar-day.has-event{border-color:#55472e;background:linear-gradient(145deg,rgba(215,170,99,.08),#090b0c)}
+.calendar-day.selected{border-color:var(--gold-2);box-shadow:inset 0 0 0 1px var(--gold-2)}
+.calendar-day-number{font-family:'Montserrat';font-size:12px}
+.calendar-dot{position:absolute;right:10px;top:11px;width:7px;height:7px;border-radius:50%;background:var(--gold)}
+.calendar-event-count{position:absolute;left:10px;bottom:9px;font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:var(--gold-2)}
+.calendar-selection{display:grid;grid-template-columns:minmax(170px,.4fr) 1.6fr;gap:28px;align-items:start;border-top:1px solid var(--line);margin-top:18px;padding-top:22px}
+.calendar-selection h3{font-size:28px;text-transform:uppercase}
+.calendar-results{display:grid;gap:10px}
+.cal-event-result{display:flex;justify-content:space-between;align-items:center;gap:18px;border:1px solid var(--line);padding:14px 16px}
+.cal-event-result strong{font-family:'Montserrat';font-weight:400;text-transform:uppercase}
+.cal-event-result span{font-size:11px;color:var(--muted)}
+.cal-event-result a{font-size:10px;text-transform:uppercase;letter-spacing:.09em;color:var(--gold-2)}
+
+/* Bottle menu + builder */
+.bottle-layout{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(320px,.75fr);gap:24px;align-items:start}
+.bottle-menu{display:grid;gap:18px}
+.bottle-category{border:1px solid var(--line);background:#080a0b}
+.bottle-category-head{display:flex;justify-content:space-between;gap:20px;padding:13px 18px;border-bottom:1px solid var(--line);font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--gold)}
+.bottle-row{width:100%;display:flex;justify-content:space-between;gap:18px;align-items:center;padding:16px 18px;border:0;border-bottom:1px solid #202326;background:transparent;color:#ddd9d1;text-align:left;cursor:pointer}
+.bottle-row:last-child{border-bottom:0}
+.bottle-row:hover,.bottle-row:focus-visible{background:#0d0f10}
+.bottle-row.added{background:rgba(215,170,99,.08)}
+.bottle-row strong{color:var(--gold-2);font-weight:500}
+.bottle-row em{font-style:normal;font-size:8px;text-transform:uppercase;letter-spacing:.1em;color:#0a0908;background:var(--gold);padding:3px 6px;margin-left:7px}
+.bottle-builder{position:sticky;top:105px;border:1px solid #3a3227;background:#090b0c;padding:26px}
+.bottle-builder h3{font-size:30px;text-transform:uppercase;margin:8px 0 18px}
+.builder-items{display:grid;gap:8px;min-height:70px}
+.builder-empty{font-size:12px;color:#777;margin:0}
+.builder-item{display:grid;grid-template-columns:1fr auto auto;gap:10px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line);font-size:12px}
+.builder-item button{border:0;background:transparent;color:#a8a49d;cursor:pointer;font-size:16px}
+.builder-summary{display:grid;border-top:1px solid var(--line);margin-top:18px;padding-top:8px}
+.builder-summary div{display:flex;justify-content:space-between;gap:20px;padding:10px 0;border-bottom:1px solid var(--line);font-size:12px}
+.builder-summary span{text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-size:9px}
+.builder-note{font-size:10px;color:#777;margin:14px 0 18px}
+.bottle-builder .btn{width:100%}
+.bottle-builder .btn:disabled{opacity:.4;cursor:not-allowed}
+
+/* Premium cards */
+.premium-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.premium-card{border:1px solid var(--line);padding:24px;background:#080a0b;min-height:205px;display:flex;flex-direction:column}
+.premium-card h3{font-size:22px;text-transform:uppercase;margin:22px 0 10px}
+.premium-card p{font-size:13px;margin:0 0 18px}
+.premium-card strong{margin-top:auto;color:var(--gold-2);font-weight:500}
+
+/* Concierge */
+.concierge-layout{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(320px,.9fr);gap:28px;align-items:start}
+.concierge-form{display:grid;gap:18px}
+.concierge-step{border:1px solid var(--line);background:#080a0b;padding:24px}
+.concierge-step h3{font-size:24px;text-transform:uppercase;margin:14px 0 18px}
+.concierge-step select{width:100%;min-height:48px;border:1px solid #35383a;background:#090b0c;color:white;padding:0 14px}
+.choice-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.choice-card{position:relative;display:block}
+.choice-card input{position:absolute;opacity:0;pointer-events:none}
+.choice-card span{display:flex;min-height:52px;align-items:center;border:1px solid #34373a;padding:0 14px;cursor:pointer;font-size:12px}
+.choice-card input:checked+span{border-color:var(--gold);background:rgba(215,170,99,.10);color:var(--gold-2)}
+.choice-card input:focus-visible+span{outline:2px solid var(--gold-2);outline-offset:3px}
+.concierge-result{position:sticky;top:105px;border:1px solid #3b3226;background:linear-gradient(180deg,#0d0f10,#080a0b);padding:30px}
+.concierge-result h2{font-size:44px;text-transform:uppercase;margin:8px 0 16px}
+.concierge-result>p:not(.eyebrow){font-size:14px}
+.recommendation-facts{display:grid;border-top:1px solid var(--line);margin:24px 0}
+.recommendation-facts div{display:flex;justify-content:space-between;gap:20px;padding:13px 0;border-bottom:1px solid var(--line);font-size:12px}
+.recommendation-facts span{text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-size:9px}
+
+@media(max-width:900px){
+  .bottle-layout,.concierge-layout{grid-template-columns:1fr}
+  .bottle-builder,.concierge-result{position:static}
+  .premium-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:700px){
+  .calendar-shell{padding:12px}
+  .calendar-grid{gap:4px}
+  .calendar-day{min-height:58px;padding:7px}
+  .calendar-event-count{display:none}
+  .calendar-selection{grid-template-columns:1fr}
+  .cal-event-result{display:grid}
+  .premium-grid{grid-template-columns:1fr}
+  .choice-grid{grid-template-columns:1fr}
+}
