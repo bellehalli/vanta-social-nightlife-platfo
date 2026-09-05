@@ -60,3 +60,60 @@ p{color:#c7c4bd}
   .brand-word{font-size:20px}.hero{min-height:620px}.hero h1{font-size:47px}.hero-copy{margin:18px 0 24px}.button-row .btn{flex:1}.split-heading{display:grid;gap:20px}.event-meta-block{text-align:left}.feature-event{height:350px}.feature-copy{left:20px;bottom:22px}.feature-copy strong{font-size:24px}.feature-cta{display:none}.weekend-head{margin-top:34px}.event-card{height:335px}.plan-grid{grid-template-columns:1fr}.plan-intro{padding-right:0}.action-card{min-height:210px}.experience-image-wrap{height:330px}.experience-copy h2{font-size:48px}.vip-gallery{min-height:420px}.vip-main{width:92%;height:360px}.vip-detail{height:160px;width:46%}.simple-heading h2{font-size:44px}.info-grid{grid-template-columns:1fr}.info-card{min-height:auto}.insider-grid h2{font-size:40px}.insider-form{grid-template-columns:1fr}.insider-form .btn,.insider-form small{grid-column:auto}.footer-top nav{gap:18px}.footer-bottom{gap:18px}.footer-bottom span{white-space:normal}
 }
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+
+
+/* ---- Portfolio optimization pass ---- */
+:where(a,button,input):focus-visible{
+  outline:2px solid var(--gold-2);
+  outline-offset:4px;
+}
+button{cursor:pointer}
+a,.btn,.menu-toggle{-webkit-tap-highlight-color:transparent}
+img{height:auto}
+section[id]{scroll-margin-top:88px}
+
+/* Improve legibility for supporting information without changing the visual direction. */
+.footer-bottom p,
+.footer-bottom span{font-size:11px;color:#96928a}
+.insider-form small{font-size:11px;color:#96928a}
+.event-card-copy small,
+.info-card>span,
+.action-index{font-size:11px}
+
+/* Keep the hero cinematic while adapting to short/tall screens. */
+.hero{min-height:min(820px,100svh)}
+
+/* Let the browser skip below-fold painting until needed on long pages. */
+@supports (content-visibility:auto){
+  .plan-section,
+  .experience-section,
+  .vip-section,
+  .pull-up-section,
+  .insider-section{
+    content-visibility:auto;
+    contain-intrinsic-size:700px;
+  }
+}
+
+.socials span{
+  color:var(--gold-2);
+  opacity:.72;
+  cursor:default;
+}
+
+@media(max-width:900px){
+  body{padding-bottom:54px}
+  .site-footer{padding-bottom:56px}
+  .hero{min-height:min(760px,100svh)}
+}
+
+@media(max-width:600px){
+  .hero{min-height:min(680px,100svh)}
+  .btn{min-height:48px}
+  .menu-toggle{min-width:44px;min-height:44px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .feature-event img,
+  .event-card img{transform:none!important}
+}

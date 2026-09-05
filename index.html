@@ -39,7 +39,7 @@
 
   <main id="top">
     <section class="hero section-dark">
-      <img class="hero-image" src="hero-night-line.JPG" alt="Guests lined up outside a nightlife venue at night" />
+      <img class="hero-image" src="hero-night-line.JPG" width="612" height="408" fetchpriority="high" decoding="async" alt="Guests lined up outside a nightlife venue at night" />
       <div class="hero-overlay"></div>
       <div class="hero-content shell">
         <p class="eyebrow">Detroit · 21+ · Doors 10 PM</p>
@@ -68,8 +68,8 @@
           <span>Tickets from $20</span>
         </div>
       </div>
-      <a class="feature-event" href="#" aria-label="View Velvet Fridays event">
-        <img src="event-dj-main.JPG" alt="DJ performing behind a club booth" />
+      <a class="feature-event" href="#guest-list" aria-label="View Velvet Fridays event">
+        <img src="event-dj-main.JPG" width="612" height="323" loading="lazy" decoding="async" alt="DJ performing behind a club booth" />
         <div class="feature-shade"></div>
         <div class="feature-copy">
           <span>Tonight at Vanta</span>
@@ -81,37 +81,37 @@
 
       <div class="weekend-head">
         <h3>This Weekend</h3>
-        <a href="#">View all events →</a>
+        <a href="#events">View all events →</a>
       </div>
       <div class="event-grid">
         <article class="event-card">
-          <img src="event-dj-hands.JPG" alt="DJ raising both hands during a set" />
+          <img src="event-dj-hands.JPG" width="612" height="323" loading="lazy" decoding="async" alt="DJ raising both hands during a set" />
           <div class="event-card-overlay"></div>
           <div class="event-card-copy">
             <small>Sat · 10 PM</small>
             <h4>After Hours</h4>
             <p>Hip-Hop · Open Format</p>
-            <a href="#">View Event →</a>
+            <a href="#guest-list">Join Guest List →</a>
           </div>
         </article>
         <article class="event-card">
-          <img src="event-crowd-pink.JPG" alt="Crowd dancing under vivid pink club lights" />
+          <img src="event-crowd-pink.JPG" width="612" height="344" loading="lazy" decoding="async" alt="Crowd dancing under vivid pink club lights" />
           <div class="event-card-overlay"></div>
           <div class="event-card-copy">
             <small>Sun · 4 PM</small>
             <h4>Sunday Service</h4>
             <p>Day Party · R&B</p>
-            <a href="#">View Event →</a>
+            <a href="#guest-list">Join Guest List →</a>
           </div>
         </article>
         <article class="event-card">
-          <img src="event-dj-silhouette.JPG" alt="DJ silhouetted against purple and pink lighting" />
+          <img src="event-dj-silhouette.JPG" width="612" height="408" loading="lazy" decoding="async" alt="DJ silhouetted against purple and pink lighting" />
           <div class="event-card-overlay"></div>
           <div class="event-card-copy">
             <small>Next Fri · 10 PM</small>
             <h4>Global Frequency</h4>
             <p>Afrobeats · Amapiano</p>
-            <a href="#">View Event →</a>
+            <a href="#guest-list">Join Guest List →</a>
           </div>
         </article>
       </div>
@@ -147,7 +147,7 @@
 
     <section class="experience-section section-dark">
       <div class="experience-image-wrap">
-        <img src="experience-club-interior.JPG" alt="Neon-lit club interior with bar and dance floor" />
+        <img src="experience-club-interior.JPG" width="612" height="408" loading="lazy" decoding="async" alt="Neon-lit club interior with bar and dance floor" />
       </div>
       <div class="experience-copy shell">
         <p class="eyebrow gold">The Vanta Experience</p>
@@ -167,11 +167,11 @@
           <div><strong>VIP Wall</strong><span>From $750</span></div>
           <div><strong>DJ Section</strong><span>From $1,200</span></div>
         </div>
-        <a class="btn btn-gold" href="#">Explore VIP</a>
+        <a class="btn btn-gold" href="#vip">Explore VIP</a>
       </div>
       <div class="vip-gallery">
-        <img class="vip-main" src="vip-champagne-guests.JPG" alt="Champagne being poured during an upscale celebration" />
-        <img class="vip-detail" src="vip-champagne-closeup.JPG" alt="Close-up of champagne being poured into a glass" />
+        <img class="vip-main" src="vip-champagne-guests.JPG" width="612" height="406" loading="lazy" decoding="async" alt="Champagne being poured during an upscale celebration" />
+        <img class="vip-detail" src="vip-champagne-closeup.JPG" width="612" height="408" loading="lazy" decoding="async" alt="Close-up of champagne being poured into a glass" />
       </div>
     </section>
 
@@ -187,7 +187,7 @@
           <div class="info-card"><span>03</span><h3>Dress Code</h3><p>Upscale & stylish<br>No athletic wear</p></div>
           <div class="info-card"><span>04</span><h3>21+ Only</h3><p>Valid government ID required. No exceptions.</p></div>
         </div>
-        <a class="text-link" href="#">View full venue info →</a>
+        <a class="text-link" href="#visit">View venue info →</a>
       </div>
     </section>
 
@@ -201,11 +201,11 @@
         <form class="insider-form" data-demo-form>
           <label>
             <span>Email</span>
-            <input type="email" placeholder="you@example.com" required />
+            <input type="email" name="email" autocomplete="email" inputmode="email" placeholder="you@example.com" required />
           </label>
           <label>
             <span>Phone <em>optional</em></span>
-            <input type="tel" placeholder="(313) 555-0123" />
+            <input type="tel" name="phone" autocomplete="tel" inputmode="tel" placeholder="(313) 555-0123" />
           </label>
           <button class="btn btn-gold" type="submit">Join Insiders</button>
           <small>Portfolio demo only. Information is not transmitted or stored.</small>
@@ -220,7 +220,7 @@
       <nav aria-label="Footer">
         <a href="#events">Events</a><a href="#vip">VIP</a><a href="#guest-list">Guest List</a><a href="#visit">Visit</a>
       </nav>
-      <div class="socials"><a href="#">IG</a><a href="#">TT</a><a href="#">FB</a></div>
+      <div class="socials" aria-label="Social links"><span aria-disabled="true">IG</span><span aria-disabled="true">TT</span><span aria-disabled="true">FB</span></div>
     </div>
     <div class="shell footer-bottom">
       <p>Portfolio concept. Vanta Social is a fictional nightlife brand created to demonstrate web design, event discovery, guest acquisition and VIP reservation systems.</p>
