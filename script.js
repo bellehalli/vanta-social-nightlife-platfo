@@ -434,3 +434,12 @@ document.addEventListener('visibilitychange', () => {
   const reel = document.querySelector('.motion-reel-track');
   if (reel) reel.style.animationPlayState = document.hidden ? 'paused' : 'running';
 });
+
+
+// Small final usability polish: when a VIP section is selected, keep the
+// request flow coherent without forcing a page jump.
+const requestThisSection = document.querySelector('.interactive-panel a[href="#reserve"]');
+requestThisSection?.addEventListener('click', () => {
+  const section = document.querySelector('#reserve');
+  setTimeout(() => section?.querySelector('input,select,textarea')?.focus({preventScroll:true}), 500);
+});

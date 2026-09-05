@@ -1708,3 +1708,205 @@ section[id]{scroll-margin-top:88px}
 @media(prefers-reduced-motion:reduce){
   .ambient-night-section *{scroll-behavior:auto!important}
 }
+
+
+/* =========================================================
+   VANTA 10/10 FINAL REFINEMENT
+   ========================================================= */
+
+/* Global rhythm */
+.page-section,
+.section{scroll-margin-top:90px}
+.page-section-head{margin-bottom:36px}
+.section{position:relative}
+
+/* Tonight microstrip */
+.tonight-microstrip{
+  border-top:1px solid #282a2d;
+  border-bottom:1px solid #282a2d;
+  background:linear-gradient(90deg,#08090a,#0d0a0c 50%,#08090a);
+}
+.tonight-microstrip-inner{
+  min-height:48px;
+  display:flex;
+  align-items:center;
+  gap:18px;
+  flex-wrap:wrap;
+  font-size:10px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.micro-kicker{color:var(--gold);font-weight:600}
+.tonight-microstrip strong{font-family:'Montserrat';font-weight:500;color:white}
+.tonight-microstrip span{color:#98948c}
+.tonight-microstrip .micro-status{
+  color:#f0bfd5;
+  border:1px solid rgba(181,43,110,.4);
+  padding:4px 8px;
+}
+.tonight-microstrip a{margin-left:auto;color:var(--gold-2)}
+
+/* Plan Your Night proof chips */
+.plan-proof{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-top:18px;
+}
+.plan-proof span{
+  border:1px solid #373a3c;
+  padding:7px 9px;
+  font-size:8px;
+  letter-spacing:.11em;
+  text-transform:uppercase;
+  color:#9b9790;
+  background:rgba(255,255,255,.01);
+}
+
+/* Guest list trust band */
+.guest-list-trust{
+  display:flex;
+  justify-content:space-between;
+  gap:18px;
+  align-items:center;
+  margin-bottom:18px;
+  padding:14px 16px;
+  border:1px solid #332d26;
+  background:rgba(215,170,99,.035);
+}
+.guest-list-trust span{
+  font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)
+}
+.guest-list-trust strong{
+  font-family:'Montserrat';font-weight:400;font-size:13px;color:#d6d1c9
+}
+
+/* Events availability ribbon */
+.event-availability-ribbon{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-bottom:14px;
+}
+.event-availability-ribbon span{
+  border:1px solid #303335;
+  background:#090b0c;
+  padding:8px 10px;
+  color:#8f8c85;
+  font-size:9px;
+  text-transform:uppercase;
+  letter-spacing:.09em;
+}
+.event-availability-ribbon strong{
+  color:var(--gold-2);
+  font-weight:500;
+}
+
+/* VIP trust line */
+.vip-trustline{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  margin-top:14px;
+  border-top:1px solid #2a2d2f;
+  border-bottom:1px solid #2a2d2f;
+}
+.vip-trustline span{
+  padding:12px 14px;
+  text-align:center;
+  border-right:1px solid #2a2d2f;
+  font-size:8px;
+  letter-spacing:.11em;
+  text-transform:uppercase;
+  color:#8f8b84;
+}
+.vip-trustline span:last-child{border-right:0}
+
+/* Visit quick actions */
+.visit-quick-actions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-bottom:18px;
+}
+.visit-quick-actions a,
+.visit-quick-actions span{
+  border:1px solid #303335;
+  background:#090b0c;
+  padding:9px 11px;
+  font-size:9px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:#9b9790;
+}
+.visit-quick-actions a{color:var(--gold-2)}
+
+/* Private sales note */
+.private-sales-note{
+  margin-top:18px;
+  border:1px solid #3a3329;
+  padding:14px 16px;
+  background:rgba(215,170,99,.035);
+  color:#98948d;
+  font-size:11px;
+}
+.private-sales-note strong{color:var(--gold-2)}
+
+/* Refine ambient density */
+.ambient-night-section{
+  background:
+    radial-gradient(circle at 14% 18%, rgba(181,43,110,.06), transparent 22%),
+    radial-gradient(circle at 84% 76%, rgba(215,170,99,.05), transparent 26%),
+    linear-gradient(180deg, rgba(255,255,255,.012), transparent 30%),
+    #070809;
+}
+.ambient-night-section::after{
+  opacity:.82;
+}
+
+/* Reduce empty-feeling spacing */
+.plan-section{padding-top:72px;padding-bottom:76px}
+.guest-benefits-section{padding-top:70px;padding-bottom:72px}
+.events-listing-section{padding-top:66px}
+.vip-reserve-section{padding-top:66px}
+
+/* Stronger but tasteful card contrast */
+.action-card,
+.benefit-card,
+.visit-panel,
+.discovery-card,
+.premium-card{
+  border-color:#2f3234;
+}
+.action-card:hover,
+.benefit-card:hover,
+.visit-panel:hover,
+.premium-card:hover{
+  border-color:#5f4c39;
+}
+
+/* Make hero/section transitions feel intentional */
+.hero,
+.page-hero{box-shadow:inset 0 -1px 0 rgba(255,255,255,.015)}
+
+/* Footer polish */
+.site-footer{
+  background:
+    radial-gradient(circle at 90% 10%,rgba(181,43,110,.045),transparent 24%),
+    #030405;
+}
+.footer-top{padding-top:8px}
+
+/* Responsive */
+@media(max-width:900px){
+  .vip-trustline{grid-template-columns:1fr 1fr}
+  .vip-trustline span:nth-child(2){border-right:0}
+  .vip-trustline span:nth-child(-n+2){border-bottom:1px solid #2a2d2f}
+  .tonight-microstrip a{margin-left:0}
+}
+@media(max-width:600px){
+  .tonight-microstrip-inner{gap:10px;padding:8px 0}
+  .guest-list-trust{display:grid}
+  .vip-trustline{grid-template-columns:1fr}
+  .vip-trustline span{border-right:0;border-bottom:1px solid #2a2d2f}
+  .vip-trustline span:last-child{border-bottom:0}
+}

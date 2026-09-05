@@ -72,3 +72,13 @@ The social widget previews are intentionally site-native so the page remains fas
 
 ## Maps
 The Visit page links to Google Maps. Replace the Downtown Detroit demo query with the client's exact street address or Google Business Profile destination.
+
+
+## 10/10 final refinement
+- Tonight microstrip for immediate event context
+- Reduced empty visual space with controlled ambient depth
+- Conversion proof chips and availability summaries
+- VIP transparency trust line
+- Visit quick actions
+- Private-events qualification note
+- Final spacing, card contrast and footer polish
