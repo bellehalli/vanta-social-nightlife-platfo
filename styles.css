@@ -334,3 +334,94 @@ section[id]{scroll-margin-top:88px}
   .vip-selection.luxury{padding:26px}
   .vip-option-grid{grid-template-columns:1fr}
 }
+
+
+/* =========================================================
+   VIP cinematic polish pass
+   ========================================================= */
+.vip-selector-shell{padding-top:10px}
+.vip-selector-grid{margin-top:6px}
+
+.vip-visual-card.cinematic{
+  position:relative;
+  min-height:470px;
+  overflow:hidden;
+  border:1px solid #2f2a22;
+  background:#08090a;
+}
+.vip-visual-card.cinematic:after{
+  content:'';
+  position:absolute;
+  inset:20px;
+  border:1px solid rgba(215,170,99,.18);
+  pointer-events:none;
+  z-index:3;
+}
+.vip-visual-image{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center 46%;
+  filter:saturate(.78) contrast(1.06) brightness(.62);
+  transform:scale(1.01);
+}
+.vip-visual-shade{
+  position:absolute;
+  inset:0;
+  z-index:1;
+  background:
+    linear-gradient(90deg,rgba(5,6,7,.82) 0%,rgba(5,6,7,.52) 45%,rgba(5,6,7,.28) 100%),
+    linear-gradient(0deg,rgba(5,6,7,.94) 0%,rgba(5,6,7,.22) 58%,rgba(5,6,7,.28) 100%);
+}
+.vip-visual-content{
+  position:absolute;
+  left:42px;
+  right:42px;
+  bottom:42px;
+  z-index:4;
+  display:grid;
+  gap:10px;
+  max-width:520px;
+}
+.vip-visual-content strong{
+  font-family:'Montserrat';
+  font-weight:300;
+  font-size:clamp(42px,5vw,70px);
+  line-height:.92;
+  text-transform:uppercase;
+  text-shadow:0 2px 18px rgba(0,0,0,.45);
+}
+.vip-visual-content span:last-child{
+  font-size:12px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:#d6d0c7;
+}
+
+/* Keep the section heading from feeling clipped beneath the fixed navigation. */
+.vip-selector-shell{
+  scroll-margin-top:120px;
+}
+@media(min-width:901px){
+  .vip-selector-shell{
+    padding-top:18px;
+  }
+}
+
+/* The older abstract orbit decoration is intentionally disabled. */
+.vip-visual-glow,
+.vip-visual-orbit{display:none!important}
+
+@media(max-width:900px){
+  .vip-visual-card.cinematic{min-height:400px}
+  .vip-visual-content{left:30px;right:30px;bottom:30px}
+}
+@media(max-width:600px){
+  .vip-selector-shell{padding-top:4px}
+  .vip-visual-card.cinematic{min-height:330px}
+  .vip-visual-content{left:24px;right:24px;bottom:24px}
+  .vip-visual-content strong{font-size:40px}
+  .vip-visual-image{object-position:center 48%}
+}
