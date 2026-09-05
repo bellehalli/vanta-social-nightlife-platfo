@@ -421,3 +421,10 @@ if (conciergeForm) {
     if (eventLink) eventLink.href = rec.href;
   });
 }
+
+
+// Pause decorative marquee when the tab is not visible.
+document.addEventListener('visibilitychange', () => {
+  const marquee = document.querySelector('.marquee-track');
+  if (marquee) marquee.style.animationPlayState = document.hidden ? 'paused' : 'running';
+});
