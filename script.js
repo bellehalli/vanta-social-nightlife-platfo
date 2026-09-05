@@ -51,7 +51,7 @@ const filterButtons = [...document.querySelectorAll('[data-event-filter]')];
 const vibeSelect = document.querySelector('[data-vibe-filter]');
 const eventCards = [...document.querySelectorAll('[data-event-card]')];
 const emptyState = document.querySelector('[data-empty-state]');
-let activeRange = 'all';
+let activeRange = 'weekend';
 
 function applyEventFilters(){
   let visible = 0;
@@ -128,6 +128,21 @@ if(zones.length) selectZone('main');
 // Sellable premium systems: calendar, bottle builder,
 // Ask Vanta concierge
 // =========================================================
+
+
+// Collapsible calendar widget
+const calendarToggle = document.querySelector('[data-calendar-toggle]');
+const calendarDrawer = document.querySelector('[data-calendar]');
+
+calendarToggle?.addEventListener('click', () => {
+  const willOpen = calendarDrawer?.hasAttribute('hidden') ?? true;
+  if (willOpen) {
+    calendarDrawer?.removeAttribute('hidden');
+  } else {
+    calendarDrawer?.setAttribute('hidden', '');
+  }
+  calendarToggle.setAttribute('aria-expanded', String(willOpen));
+});
 
 // Functional event calendar
 const calendarRoot = document.querySelector('[data-calendar]');
@@ -207,6 +222,21 @@ if (calendarRoot) {
           selectedDate = key;
           renderCalendar();
           renderCalendarResults(key);
+
+          const dateToRange = {
+            '2026-09-05':'today',
+            '2026-09-06':'weekend',
+            '2026-09-11':'seven',
+            '2026-09-18':'month'
+          };
+          const mappedRange = dateToRange[key];
+          if (mappedRange) {
+            activeRange = mappedRange;
+            filterButtons.forEach(button => {
+              button.classList.toggle('active', button.dataset.eventFilter === mappedRange);
+            });
+            applyEventFilters();
+          }
         });
       }
       grid.appendChild(btn);

@@ -619,3 +619,96 @@ section[id]{scroll-margin-top:88px}
   .premium-grid{grid-template-columns:1fr}
   .choice-grid{grid-template-columns:1fr}
 }
+
+
+/* =========================================================
+   EVENTS — collapsible calendar widget integrated with filters
+   ========================================================= */
+.event-control-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:16px;
+  margin:0 0 18px;
+}
+.event-control-row .filter-bar{
+  margin:0;
+}
+.event-control-row .select-control{
+  flex:0 0 auto;
+  min-width:190px;
+}
+.calendar-toggle{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+}
+.calendar-toggle-icon{
+  display:inline-grid;
+  place-items:center;
+  width:18px;
+  height:18px;
+  border:1px solid currentColor;
+  border-radius:50%;
+  font-size:13px;
+  line-height:1;
+}
+.calendar-toggle[aria-expanded="true"]{
+  border-color:var(--gold);
+  color:var(--gold-2);
+}
+.calendar-toggle[aria-expanded="true"] .calendar-toggle-icon{
+  transform:rotate(45deg);
+}
+.calendar-drawer{
+  margin:0 0 28px;
+}
+.calendar-drawer[hidden]{
+  display:none;
+}
+.calendar-drawer-inner{
+  border:1px solid #383126;
+  background:linear-gradient(180deg,#0a0c0d,#070809);
+  padding:18px;
+}
+.calendar-selection.compact{
+  grid-template-columns:minmax(150px,.35fr) 1.65fr;
+  margin-top:14px;
+  padding-top:18px;
+}
+.calendar-selection.compact h3{
+  font-size:24px;
+}
+.calendar-drawer .calendar-day{
+  min-height:68px;
+}
+.calendar-drawer .calendar-toolbar{
+  padding-bottom:14px;
+}
+.calendar-drawer .calendar-weekdays{
+  padding-top:14px;
+}
+
+@media(max-width:900px){
+  .event-control-row{
+    display:grid;
+    gap:12px;
+  }
+  .event-control-row .select-control{
+    width:100%;
+    min-width:0;
+  }
+}
+@media(max-width:700px){
+  .event-control-row .filter-bar{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    width:100%;
+  }
+  .event-control-row .filter-btn{
+    width:100%;
+  }
+  .calendar-selection.compact{
+    grid-template-columns:1fr;
+  }
+}

@@ -44,19 +44,40 @@
   </div>
 </section>
 
-<section class="page-section alt">
-  <div class="shell">
-    <div class="page-section-head">
-      <div><p class="eyebrow gold">September 2026</p><h2>Nightlife Calendar</h2></div>
-      <p>Tap a date to see what is happening that night. Dates with events are highlighted.</p>
+
+
+<section class="page-section shell">
+  <div class="page-section-head">
+    <div><p class="eyebrow gold">September 2026</p><h2>Upcoming Events</h2></div>
+    <p>Filter by when you want to go and what you actually want to hear.</p>
+  </div>
+  <div class="event-control-row">
+    <div class="filter-bar" aria-label="Event date filters">
+      <button class="filter-btn" type="button" data-event-filter="today">Today</button>
+      <button class="filter-btn active" type="button" data-event-filter="weekend">This Weekend</button>
+      <button class="filter-btn" type="button" data-event-filter="seven">Next 7 Days</button>
+      <button class="filter-btn" type="button" data-event-filter="month">This Month</button>
+      <button class="filter-btn calendar-toggle" type="button" data-calendar-toggle aria-expanded="false" aria-controls="event-calendar-widget">
+        <span>Calendar</span><span class="calendar-toggle-icon" aria-hidden="true">+</span>
+      </button>
     </div>
 
-    <div class="calendar-shell" data-calendar>
+    <select class="select-control" aria-label="Filter by vibe" data-vibe-filter>
+      <option value="all">All vibes</option>
+      <option value="rnb">R&B / Hip-Hop</option>
+      <option value="day">Day Party</option>
+      <option value="global">Afrobeats / Amapiano</option>
+      <option value="open">Open Format</option>
+    </select>
+  </div>
+
+  <div id="event-calendar-widget" class="calendar-drawer" data-calendar hidden>
+    <div class="calendar-drawer-inner">
       <div class="calendar-toolbar">
         <button class="calendar-nav-btn" type="button" data-cal-prev aria-label="Previous month">←</button>
         <div>
           <span class="calendar-month-label" data-cal-label>September 2026</span>
-          <span class="calendar-sub">Live demo calendar</span>
+          <span class="calendar-sub">Choose a date</span>
         </div>
         <button class="calendar-nav-btn" type="button" data-cal-next aria-label="Next month">→</button>
       </div>
@@ -66,7 +87,7 @@
       </div>
       <div class="calendar-grid" data-cal-grid aria-label="Event calendar"></div>
 
-      <div class="calendar-selection" aria-live="polite">
+      <div class="calendar-selection compact" aria-live="polite">
         <div>
           <p class="eyebrow gold">Selected Date</p>
           <h3 data-cal-date>September 5</h3>
@@ -75,28 +96,8 @@
       </div>
     </div>
   </div>
-</section>
-
-<section class="page-section shell">
-  <div class="page-section-head">
-    <div><p class="eyebrow gold">September 2026</p><h2>Upcoming Events</h2></div>
-    <p>Filter by when you want to go and what you actually want to hear.</p>
-  </div>
-  <div class="filter-bar" aria-label="Event filters">
-    <button class="filter-btn active" type="button" data-event-filter="all">All</button>
-    <button class="filter-btn" type="button" data-event-filter="weekend">This Weekend</button>
-    <button class="filter-btn" type="button" data-event-filter="seven">Next 7 Days</button>
-    <button class="filter-btn" type="button" data-event-filter="month">This Month</button>
-    <select class="select-control" aria-label="Filter by vibe" data-vibe-filter>
-      <option value="all">All vibes</option>
-      <option value="rnb">R&B / Hip-Hop</option>
-      <option value="day">Day Party</option>
-      <option value="global">Afrobeats / Amapiano</option>
-      <option value="open">Open Format</option>
-    </select>
-  </div>
   <div class="discovery-grid">
-    <article class="discovery-card" data-event-card data-range="weekend seven month" data-vibe="open">
+    <article class="discovery-card" data-event-card data-range="today weekend seven month" data-vibe="open">
       <img src="event-dj-hands.JPG" width="612" height="323" loading="lazy" decoding="async" alt="DJ with hands raised">
       <div class="discovery-copy"><div class="meta-row"><strong>Sat Sep 5</strong><span>10 PM</span><span>21+</span></div><h3>After Hours</h3><p>Hip-Hop · Open Format · late-night energy.</p><div class="discovery-actions"><a href="after-hours.html">View Event →</a><a href="guest-list.html">Guest List</a></div></div>
     </article>
