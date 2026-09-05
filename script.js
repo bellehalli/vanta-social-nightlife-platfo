@@ -96,13 +96,17 @@ const reservationSection = document.querySelector('[data-reservation-section]');
 function selectZone(key){
   const info = vipData[key];
   if(!info) return;
-  zones.forEach(z => z.classList.toggle('active', z.dataset.zone === key));
-  if(selectionName) selectionName.textContent = info.name;
-  if(selectionPrice) selectionPrice.textContent = info.price;
-  if(selectionCapacity) selectionCapacity.textContent = info.capacity;
-  if(selectionDeposit) selectionDeposit.textContent = info.deposit;
-  if(selectionBest) selectionBest.textContent = info.best;
-  if(selectionNote) selectionNote.textContent = info.note;
+  zones.forEach(z => {
+    const isActive = z.dataset.zone === key;
+    z.classList.toggle('active', isActive);
+    if (z.matches('[role="tab"]')) z.setAttribute('aria-selected', String(isActive));
+  });
+  document.querySelectorAll('[data-selection-name]').forEach(el => el.textContent = info.name);
+  document.querySelectorAll('[data-selection-price]').forEach(el => el.textContent = info.price);
+  document.querySelectorAll('[data-selection-capacity]').forEach(el => el.textContent = info.capacity);
+  document.querySelectorAll('[data-selection-deposit]').forEach(el => el.textContent = info.deposit);
+  document.querySelectorAll('[data-selection-best]').forEach(el => el.textContent = info.best);
+  document.querySelectorAll('[data-selection-note]').forEach(el => el.textContent = info.note);
   if(reservationSection) reservationSection.value = info.name;
 }
 zones.forEach(zone => zone.addEventListener('click', () => selectZone(zone.dataset.zone)));
