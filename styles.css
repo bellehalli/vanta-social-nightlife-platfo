@@ -1495,3 +1495,216 @@ section[id]{scroll-margin-top:88px}
   .motion-reel-track{animation:none}
   .platform-widget,.social-icon-link{transition:none}
 }
+
+
+/* =========================================================
+   TASTEFUL AMBIENT DEPTH PASS
+   Adds visual interest to black sections without turning
+   Vanta into a neon-tech or overdesigned club site.
+   ========================================================= */
+
+.ambient-night-section{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 12% 18%, rgba(181,43,110,.075), transparent 24%),
+    radial-gradient(circle at 88% 74%, rgba(215,170,99,.055), transparent 28%),
+    linear-gradient(180deg, rgba(255,255,255,.012), transparent 30%),
+    #070809;
+}
+
+.ambient-night-section::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  z-index:-2;
+  pointer-events:none;
+  opacity:.26;
+  background:
+    linear-gradient(115deg, transparent 0 36%, rgba(255,255,255,.028) 36.15% 36.3%, transparent 36.45% 100%),
+    linear-gradient(62deg, transparent 0 67%, rgba(215,170,99,.045) 67.1% 67.28%, transparent 67.4% 100%);
+}
+
+.ambient-night-section::after{
+  content:'V';
+  position:absolute;
+  z-index:-1;
+  right:3vw;
+  top:50%;
+  transform:translateY(-50%);
+  font-family:'Montserrat',sans-serif;
+  font-weight:300;
+  font-size:clamp(180px,28vw,430px);
+  line-height:.72;
+  color:transparent;
+  -webkit-text-stroke:1px rgba(215,170,99,.045);
+  text-stroke:1px rgba(215,170,99,.045);
+  pointer-events:none;
+  user-select:none;
+}
+
+.ambient-night-section.soft::after{
+  left:2vw;
+  right:auto;
+  content:'SOCIAL';
+  font-size:clamp(90px,15vw,240px);
+  letter-spacing:.08em;
+  transform:translateY(-50%) rotate(-90deg);
+  transform-origin:center;
+  -webkit-text-stroke-color:rgba(255,255,255,.028);
+}
+
+.ambient-night-section > *{
+  position:relative;
+  z-index:1;
+}
+
+/* faint architectural corner rules */
+.ambient-night-section .shell::before,
+.ambient-night-section.shell::before{
+  content:'';
+  position:absolute;
+  width:76px;
+  height:76px;
+  left:0;
+  top:22px;
+  border-left:1px solid rgba(215,170,99,.08);
+  border-top:1px solid rgba(215,170,99,.08);
+  pointer-events:none;
+}
+.ambient-night-section .shell::after,
+.ambient-night-section.shell::after{
+  content:'';
+  position:absolute;
+  width:76px;
+  height:76px;
+  right:0;
+  bottom:22px;
+  border-right:1px solid rgba(181,43,110,.075);
+  border-bottom:1px solid rgba(181,43,110,.075);
+  pointer-events:none;
+}
+
+/* Cards now float slightly above the ambient field */
+.ambient-night-section .action-card,
+.ambient-night-section .benefit-card,
+.ambient-night-section .visit-panel,
+.ambient-night-section .discovery-card,
+.ambient-night-section .info-card{
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.018), rgba(255,255,255,.005)),
+    rgba(7,9,10,.92);
+  backdrop-filter:blur(1.5px);
+}
+
+.ambient-night-section .action-card:hover,
+.ambient-night-section .benefit-card:hover,
+.ambient-night-section .visit-panel:hover{
+  border-color:rgba(215,170,99,.26);
+}
+
+/* Guest List: keep it grown-up, add a quiet photographic glow */
+.guest-benefits-section{
+  background:
+    radial-gradient(circle at 6% 80%, rgba(116,31,80,.12), transparent 30%),
+    radial-gradient(circle at 94% 10%, rgba(215,170,99,.055), transparent 24%),
+    #070809;
+}
+.guest-benefits-section::after{
+  content:'GUEST';
+  right:-2vw;
+  top:58%;
+  font-size:clamp(110px,18vw,260px);
+  letter-spacing:.04em;
+  -webkit-text-stroke-color:rgba(255,255,255,.032);
+}
+
+/* Form section gets a subtle spotlight behind the heading/forms */
+.guest-form-section{
+  background:
+    radial-gradient(ellipse at 50% 20%, rgba(215,170,99,.055), transparent 34%),
+    linear-gradient(180deg,#090b0c,#070809);
+}
+.guest-form-section::after{
+  content:'LIST';
+  left:3vw;
+  right:auto;
+  top:64%;
+  font-size:clamp(100px,16vw,240px);
+  -webkit-text-stroke-color:rgba(181,43,110,.045);
+}
+
+/* Plan Your Night: slightly more visual, still elegant */
+.plan-section.ambient-night-section{
+  background:
+    radial-gradient(circle at 77% 22%, rgba(181,43,110,.095), transparent 25%),
+    radial-gradient(circle at 20% 76%, rgba(215,170,99,.06), transparent 28%),
+    linear-gradient(180deg,#08090a,#060708);
+}
+.plan-section.ambient-night-section::after{
+  content:'03';
+  color:rgba(255,255,255,.018);
+  -webkit-text-stroke:0;
+  font-size:clamp(200px,30vw,460px);
+  right:-2vw;
+  top:52%;
+}
+
+/* Event listing background feels like poster wall lighting */
+.events-listing-section{
+  background:
+    radial-gradient(circle at 92% 8%, rgba(181,43,110,.08), transparent 22%),
+    radial-gradient(circle at 10% 55%, rgba(215,170,99,.045), transparent 27%),
+    #070809;
+}
+
+/* VIP reservation uses a champagne-toned glow */
+.vip-reserve-section{
+  background:
+    radial-gradient(circle at 84% 16%, rgba(215,170,99,.09), transparent 25%),
+    radial-gradient(circle at 12% 86%, rgba(181,43,110,.06), transparent 24%),
+    #070809;
+}
+
+/* Visit info gets a very subtle city-grid feel */
+.visit-info-section::before{
+  opacity:.22;
+  background:
+    linear-gradient(90deg,transparent 0 24%,rgba(255,255,255,.025) 24.1% 24.2%,transparent 24.3% 100%),
+    linear-gradient(0deg,transparent 0 64%,rgba(215,170,99,.035) 64.1% 64.2%,transparent 64.3% 100%);
+}
+
+/* Desktop only: tiny floating editorial tag */
+@media(min-width:901px){
+  .plan-section.ambient-night-section .plan-grid::after{
+    content:'DETROIT / NIGHTLIFE / 2026';
+    position:absolute;
+    right:-22px;
+    top:44%;
+    writing-mode:vertical-rl;
+    font-size:8px;
+    letter-spacing:.18em;
+    color:#666a67;
+  }
+}
+
+/* Mobile: preserve texture but reduce oversized decoration */
+@media(max-width:700px){
+  .ambient-night-section::after{
+    font-size:150px;
+    right:-18px;
+    opacity:.75;
+  }
+  .ambient-night-section .shell::before,
+  .ambient-night-section.shell::before,
+  .ambient-night-section .shell::after,
+  .ambient-night-section.shell::after{
+    width:44px;
+    height:44px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .ambient-night-section *{scroll-behavior:auto!important}
+}
