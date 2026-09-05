@@ -712,3 +712,195 @@ section[id]{scroll-margin-top:88px}
     grid-template-columns:1fr;
   }
 }
+
+
+/* =========================================================
+   FINAL POLISH — compact calendar, curated bottle service,
+   premium concierge, subtle motion and trust cues
+   ========================================================= */
+
+/* Homepage concierge strip */
+.concierge-strip{
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  background:linear-gradient(90deg,#090b0c,#0c0e0f 55%,#090b0c);
+  padding:42px 0;
+}
+.concierge-strip-inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:32px;
+}
+.concierge-strip h2{
+  font-size:clamp(30px,4vw,50px);
+  text-transform:uppercase;
+  margin-bottom:10px;
+}
+.concierge-strip p:not(.eyebrow){
+  margin:0;
+  max-width:720px;
+  font-size:14px;
+}
+
+/* Events polish */
+.event-filter-note{
+  margin:0 0 18px;
+  color:#8f8b84;
+  font-size:11px;
+  letter-spacing:.03em;
+}
+.calendar-drawer-inner{
+  max-height:min(620px,70vh);
+  overflow:auto;
+  scrollbar-width:thin;
+  scrollbar-color:#4b4031 #0a0c0d;
+}
+.calendar-day{
+  transition:border-color .18s ease,background .18s ease,transform .18s ease;
+}
+@media (hover:hover) and (pointer:fine){
+  .calendar-day:not(.outside):hover{transform:translateY(-1px)}
+}
+.calendar-toggle-icon{transition:transform .18s ease}
+
+/* VIP floorplan polish */
+.luxury-floorplan{
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.015);
+}
+.floorplan-svg{filter:drop-shadow(0 8px 22px rgba(0,0,0,.18))}
+.interactive-panel{
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.02);
+}
+.selection-hint{
+  border-top:1px solid var(--line);
+  padding-top:14px;
+}
+
+/* Curated bottle-service presentation */
+.bottle-menu{gap:14px}
+.bottle-category{
+  border-color:#2b2e31;
+  background:linear-gradient(180deg,#090b0c,#08090a);
+}
+.bottle-category-head{
+  background:#0b0d0e;
+}
+.bottle-category-head span:last-child{
+  color:#7d7f7d;
+  font-size:8px;
+}
+.bottle-row{
+  min-height:54px;
+  transition:background .16s ease,border-color .16s ease;
+}
+.bottle-row span:first-child{
+  font-size:13px;
+}
+.bottle-row strong{
+  font-family:'Montserrat';
+  font-size:13px;
+  white-space:nowrap;
+}
+.bottle-builder{
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.02);
+}
+.builder-item strong{color:var(--gold-2);font-weight:500}
+
+/* Premium add-ons */
+.premium-card{
+  position:relative;
+  overflow:hidden;
+}
+.premium-card:after{
+  content:'';
+  position:absolute;
+  inset:auto 0 0 0;
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(215,170,99,.35),transparent);
+}
+
+/* Concierge should feel like guided service, not a chatbot */
+.concierge-disclaimer{
+  border:1px solid #3b3226;
+  background:rgba(215,170,99,.04);
+  padding:14px 16px;
+  margin-bottom:16px;
+}
+.concierge-disclaimer span{
+  font-size:9px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--gold);
+}
+.concierge-disclaimer p{
+  margin:6px 0 0;
+  font-size:12px;
+  color:#aaa79f;
+}
+.concierge-result{
+  min-height:420px;
+}
+.concierge-result:before{
+  content:'V';
+  position:absolute;
+  right:22px;
+  top:14px;
+  font-family:'Montserrat';
+  font-size:82px;
+  line-height:1;
+  color:rgba(215,170,99,.035);
+  pointer-events:none;
+}
+.concierge-result{position:sticky}
+
+/* Slightly more premium active nav state */
+.desktop-nav a[aria-current="page"]{
+  color:var(--gold-2);
+  position:relative;
+}
+.desktop-nav a[aria-current="page"]:after{
+  content:'';
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:-10px;
+  height:1px;
+  background:var(--gold);
+}
+
+/* Better visible focus across custom controls */
+.filter-btn:focus-visible,
+.calendar-nav-btn:focus-visible,
+.vip-selector-tab:focus-visible,
+.bottle-row:focus-visible{
+  outline:2px solid var(--gold-2);
+  outline-offset:3px;
+}
+
+/* Reduce motion responsibly */
+@media(prefers-reduced-motion:reduce){
+  .calendar-day,
+  .calendar-toggle-icon,
+  .bottle-row{transition:none!important}
+}
+
+/* Mobile refinements */
+@media(max-width:700px){
+  .concierge-strip-inner{
+    display:grid;
+  }
+  .concierge-strip .btn{
+    width:100%;
+  }
+  .calendar-drawer-inner{
+    max-height:none;
+    overflow:visible;
+  }
+  .bottle-row{
+    padding:14px;
+  }
+  .bottle-row span:first-child{
+    min-width:0;
+  }
+}

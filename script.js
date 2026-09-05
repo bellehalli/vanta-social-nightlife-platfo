@@ -92,6 +92,7 @@ const selectionDeposit = document.querySelector('[data-selection-deposit]');
 const selectionBest = document.querySelector('[data-selection-best]');
 const selectionNote = document.querySelector('[data-selection-note]');
 const reservationSection = document.querySelector('[data-reservation-section]');
+const floorplanStatus = document.querySelector('[data-floorplan-status]');
 
 function selectZone(key){
   const info = vipData[key];
@@ -109,6 +110,7 @@ function selectZone(key){
   document.querySelectorAll('[data-selection-best]').forEach(el => el.textContent = info.best);
   document.querySelectorAll('[data-selection-note]').forEach(el => el.textContent = info.note);
   if(reservationSection) reservationSection.value = info.name;
+  if(floorplanStatus) floorplanStatus.textContent = `${info.name} selected. Tap another highlighted area to compare.`;
 }
 zones.forEach(zone => {
   zone.addEventListener('click', () => selectZone(zone.dataset.zone));
@@ -142,6 +144,15 @@ calendarToggle?.addEventListener('click', () => {
     calendarDrawer?.setAttribute('hidden', '');
   }
   calendarToggle.setAttribute('aria-expanded', String(willOpen));
+});
+
+
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape' && calendarDrawer && !calendarDrawer.hasAttribute('hidden')) {
+    calendarDrawer.setAttribute('hidden','');
+    calendarToggle?.setAttribute('aria-expanded','false');
+    calendarToggle?.focus();
+  }
 });
 
 // Functional event calendar
@@ -285,6 +296,7 @@ function renderBottleBuilder() {
   if (builderCount) builderCount.textContent = String(count);
   if (builderTotal) builderTotal.textContent = `$${total.toLocaleString()}`;
   if (builderToForm) builderToForm.disabled = count === 0;
+  bottleButtons.forEach(btn => btn.classList.toggle('added', selectedBottles.has(btn.dataset.bottle)));
 
   document.querySelectorAll('[data-remove-bottle]').forEach(btn => {
     btn.addEventListener('click', () => {
