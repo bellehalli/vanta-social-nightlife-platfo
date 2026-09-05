@@ -428,3 +428,9 @@ document.addEventListener('visibilitychange', () => {
   const marquee = document.querySelector('.marquee-track');
   if (marquee) marquee.style.animationPlayState = document.hidden ? 'paused' : 'running';
 });
+
+
+document.addEventListener('visibilitychange', () => {
+  const reel = document.querySelector('.motion-reel-track');
+  if (reel) reel.style.animationPlayState = document.hidden ? 'paused' : 'running';
+});

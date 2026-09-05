@@ -1251,3 +1251,247 @@ section[id]{scroll-margin-top:88px}
   .marquee-track{animation:none}
   .hero-image,.brand-break img,.vip-spotlight img{transition:none!important;transform:none!important}
 }
+
+
+/* =========================================================
+   SOCIAL / MOTION / MAP ENHANCEMENTS
+   ========================================================= */
+
+/* actual platform icon links */
+.socials{
+  display:flex;
+  gap:10px;
+  align-items:center;
+}
+.social-icon-link{
+  width:38px;
+  height:38px;
+  border:1px solid #3a3329;
+  display:grid;
+  place-items:center;
+  color:var(--gold-2);
+  transition:.2s ease;
+}
+.social-icon-link svg{
+  width:18px;height:18px;
+  fill:none;stroke:currentColor;stroke-width:1.6;
+}
+.social-icon-link svg path{fill:currentColor;stroke:none}
+.social-icon-link:hover{
+  background:var(--gold);
+  color:#080706;
+  border-color:var(--gold);
+  transform:translateY(-2px);
+}
+
+/* social wall widgets */
+.social-wall{
+  padding:78px 0;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  background:
+    radial-gradient(circle at 12% 20%,rgba(181,43,110,.08),transparent 28%),
+    #070809;
+}
+.social-wall-head{
+  margin-bottom:26px;
+}
+.social-wall-head h2{
+  font-size:clamp(42px,6vw,76px);
+  text-transform:uppercase;
+}
+.social-wall-head p:not(.eyebrow){max-width:620px}
+.social-widget-grid{
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+  gap:18px;
+}
+.platform-widget{
+  border:1px solid #312e2a;
+  background:#090b0c;
+  min-height:390px;
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+  transition:.25s ease;
+}
+.platform-widget:hover{
+  transform:translateY(-3px);
+  border-color:#65543d;
+}
+.platform-widget-top{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:16px 18px;
+  border-bottom:1px solid #25282b;
+}
+.platform-icon{
+  width:30px;height:30px;
+  display:grid;place-items:center;
+}
+.platform-icon svg{
+  width:22px;height:22px;
+  fill:none;stroke:currentColor;stroke-width:1.7;
+}
+.platform-icon.fb-icon svg path{fill:currentColor;stroke:none}
+.platform-name{
+  font-family:'Montserrat';
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:.1em;
+}
+.platform-arrow{margin-left:auto;color:var(--gold-2)}
+.social-preview-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  flex:1;
+}
+.social-preview-grid img{
+  width:100%;
+  height:100%;
+  min-height:250px;
+  object-fit:cover;
+}
+.facebook-preview{
+  flex:1;
+  padding:32px 28px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  background:
+    linear-gradient(135deg,rgba(24,119,242,.08),transparent 55%),
+    radial-gradient(circle at 80% 20%,rgba(215,170,99,.08),transparent 35%);
+}
+.fb-kicker{
+  color:#8eb9f2;
+  font-size:9px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+.facebook-preview strong{
+  font-family:'Montserrat';
+  font-weight:300;
+  font-size:34px;
+  text-transform:uppercase;
+  margin:10px 0;
+}
+.facebook-preview p{max-width:430px;font-size:13px}
+.fb-action{
+  margin-top:10px;
+  color:var(--gold-2);
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:.1em;
+}
+.platform-widget-bottom{
+  padding:15px 18px;
+  border-top:1px solid #25282b;
+  display:grid;
+  gap:3px;
+}
+.platform-widget-bottom strong{
+  font-family:'Montserrat';
+  font-size:12px;
+  font-weight:500;
+}
+.platform-widget-bottom span{
+  color:#817e77;
+  font-size:10px;
+}
+.social-config-note{
+  margin-top:14px;
+  font-size:10px;
+  color:#76746f;
+}
+
+/* animated image reel — GIF-like visual energy */
+.motion-reel{
+  overflow:hidden;
+  background:#050607;
+  border-bottom:1px solid var(--line);
+}
+.motion-reel-track{
+  display:flex;
+  width:max-content;
+  gap:8px;
+  padding:8px;
+  animation:vantaImageReel 38s linear infinite;
+}
+.motion-reel figure{
+  position:relative;
+  width:280px;
+  height:170px;
+  flex:0 0 auto;
+  margin:0;
+  overflow:hidden;
+  border:1px solid #2c2f31;
+}
+.motion-reel img{
+  width:100%;height:100%;object-fit:cover;
+  filter:saturate(.9) contrast(1.05);
+  transform:scale(1.04);
+}
+.motion-reel figcaption{
+  position:absolute;
+  left:12px;bottom:10px;
+  font-family:'Montserrat';
+  font-size:9px;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  color:white;
+  text-shadow:0 1px 7px rgba(0,0,0,.7);
+}
+.motion-reel figure:after{
+  content:'';
+  position:absolute;inset:0;
+  background:linear-gradient(0deg,rgba(0,0,0,.55),transparent 58%);
+}
+.motion-reel figcaption{z-index:2}
+@keyframes vantaImageReel{to{transform:translateX(-50%)}}
+
+/* Google Maps location visual */
+.location-panel{position:relative;overflow:hidden}
+.location-map-graphic{
+  position:relative;
+  height:150px;
+  margin:22px 0;
+  border:1px solid #2e3133;
+  background:
+    linear-gradient(30deg,transparent 48%,rgba(215,170,99,.07) 49%,rgba(215,170,99,.07) 51%,transparent 52%),
+    linear-gradient(-28deg,transparent 48%,rgba(255,255,255,.035) 49%,rgba(255,255,255,.035) 51%,transparent 52%),
+    #090b0c;
+  overflow:hidden;
+}
+.map-ring{
+  position:absolute;
+  border:1px solid rgba(215,170,99,.22);
+  border-radius:50%;
+}
+.ring-a{width:170px;height:170px;left:50%;top:50%;transform:translate(-50%,-50%)}
+.ring-b{width:92px;height:92px;left:50%;top:50%;transform:translate(-50%,-50%)}
+.map-pin{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:38px;height:38px;border-radius:50% 50% 50% 0;
+  rotate:-45deg;
+  display:grid;place-items:center;
+  background:var(--gold);color:#080706;
+  font-family:'Montserrat';font-weight:600;
+}
+.map-pin::first-letter{rotate:45deg}
+.map-button{width:100%}
+
+@media(max-width:900px){
+  .social-widget-grid{grid-template-columns:1fr}
+  .platform-widget{min-height:340px}
+}
+@media(max-width:600px){
+  .social-wall{padding:58px 0}
+  .social-preview-grid img{min-height:180px}
+  .facebook-preview strong{font-size:28px}
+  .motion-reel figure{width:220px;height:140px}
+}
+@media(prefers-reduced-motion:reduce){
+  .motion-reel-track{animation:none}
+  .platform-widget,.social-icon-link{transition:none}
+}

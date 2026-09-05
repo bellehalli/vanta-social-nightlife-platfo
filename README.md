@@ -61,3 +61,14 @@ No build command or output directory is required.
 - Accessible skip links and labeled concierge controls
 - Favicon, robots.txt and Vercel security/cache headers
 - Portfolio demo remains noindex/nofollow and does not transmit form data
+
+
+## Social profile configuration
+The demo uses live Instagram and Facebook platform links with fictional Vanta branding.
+For a client deployment, replace:
+- https://www.instagram.com/ with the venue's Instagram profile URL
+- https://www.facebook.com/ with the venue's Facebook Page URL
+The social widget previews are intentionally site-native so the page remains fast and visually consistent without relying on third-party embed scripts.
+
+## Maps
+The Visit page links to Google Maps. Replace the Downtown Detroit demo query with the client's exact street address or Google Business Profile destination.
