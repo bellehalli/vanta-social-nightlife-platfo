@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#050607">
 <meta name="robots" content="noindex,nofollow">
 <meta name="description" content="Interactive nightlife concierge demo for the fictional Vanta Social portfolio concept.">
 <title>Ask Vanta — Night Concierge</title>
@@ -10,8 +11,10 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
 </head>
 <body>
+<a class="skip-link" href="#main-content">Skip to content</a>
 <header class="site-header scrolled" data-header>
   <a class="brand" href="index.html" aria-label="Vanta Social home"><span class="brand-word">VANTA</span><span class="brand-sub">SOCIAL</span></a>
   <nav class="desktop-nav" aria-label="Primary">
@@ -24,7 +27,7 @@
   </div>
 </header>
 
-<main class="page-main">
+<main id="main-content" class="page-main">
 <section class="page-hero has-image">
   <img class="page-hero-image" src="experience-club-interior.JPG" width="612" height="408" fetchpriority="high" decoding="async" alt="Dark upscale nightclub interior">
   <div class="page-hero-shade"></div>
@@ -54,7 +57,7 @@
       <div class="concierge-step">
         <span class="action-index">02</span>
         <h3>How many people?</h3>
-        <select name="group">
+        <select name="group" aria-label="Group size">
           <option value="2">1–2 people</option>
           <option value="4">3–4 people</option>
           <option value="6">5–6 people</option>

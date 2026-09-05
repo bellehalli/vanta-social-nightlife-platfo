@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#050607">
 <meta name="robots" content="noindex,nofollow">
 <meta name="description" content="Browse fictional Vanta Social Detroit nightlife events by date and vibe.">
 <title>Events — Vanta Social</title>
@@ -10,8 +11,10 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
 </head>
 <body>
+<a class="skip-link" href="#main-content">Skip to content</a>
 <header class="site-header scrolled" data-header>
   <a class="brand" href="index.html" aria-label="Vanta Social home">
     <span class="brand-word">VANTA</span><span class="brand-sub">SOCIAL</span>
@@ -32,7 +35,7 @@
     <a class="btn btn-gold" href="vip.html">Reserve VIP</a>
   </div>
 </header>
-<main class="page-main">
+<main id="main-content" class="page-main">
 <section class="page-hero has-image">
   <img class="page-hero-image" src="event-crowd-pink.JPG" width="612" height="344" fetchpriority="high" decoding="async" alt="Crowd dancing under pink club lights">
   <div class="page-hero-shade"></div>
@@ -98,9 +101,9 @@
     </div>
   </div>
   <div class="discovery-grid">
-    <article class="discovery-card" data-event-card data-range="today weekend seven month" data-vibe="open">
+    <article class="discovery-card" data-event-card data-range="today weekend seven month" data-vibe="open" data-date="2026-09-05" data-status="selling">
       <img src="event-dj-hands.JPG" width="612" height="323" loading="lazy" decoding="async" alt="DJ with hands raised">
-      <div class="discovery-copy"><div class="meta-row"><strong>Sat Sep 5</strong><span>10 PM</span><span>21+</span></div><h3>After Hours</h3><p>Hip-Hop · Open Format · late-night energy.</p><div class="discovery-actions"><a href="after-hours.html">View Event →</a><a href="guest-list.html">Guest List</a></div></div>
+      <div class="discovery-copy"><span class="event-status selling">Selling Fast</span><div class="meta-row"><strong>Sat Sep 5</strong><span>10 PM</span><span>21+</span></div><h3>After Hours</h3><p>Hip-Hop · Open Format · late-night energy.</p><div class="discovery-actions"><a href="after-hours.html">View Event →</a><a href="guest-list.html">Guest List</a></div></div>
     </article>
     <article class="discovery-card" data-event-card data-range="weekend seven month" data-vibe="day">
       <img src="event-crowd-pink.JPG" width="612" height="344" loading="lazy" decoding="async" alt="Crowd at a pink-lit day party">

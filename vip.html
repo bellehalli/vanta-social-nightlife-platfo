@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#050607">
 <meta name="robots" content="noindex,nofollow">
 <meta name="description" content="Compare fictional Vanta Social VIP sections, minimums, bottle packages and submit a demo reservation inquiry.">
 <title>VIP Tables — Vanta Social</title>
@@ -10,8 +11,10 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
 </head>
 <body>
+<a class="skip-link" href="#main-content">Skip to content</a>
 <header class="site-header scrolled" data-header>
   <a class="brand" href="index.html" aria-label="Vanta Social home">
     <span class="brand-word">VANTA</span><span class="brand-sub">SOCIAL</span>
@@ -32,7 +35,7 @@
     <a class="btn btn-gold" href="vip.html">Reserve VIP</a>
   </div>
 </header>
-<main class="page-main">
+<main id="main-content" class="page-main">
 <section class="page-hero has-image">
   <img class="page-hero-image" src="vip-champagne-guests.JPG" width="612" height="406" fetchpriority="high" decoding="async" alt="Champagne being poured during a VIP celebration">
   <div class="page-hero-shade"></div>
@@ -93,7 +96,7 @@
         </g>
 
         <!-- interactive DJ section -->
-        <g class="floor-zone-svg" role="button" tabindex="0" data-zone="dj" aria-label="DJ Section, from $1,200">
+        <g class="floor-zone-svg" role="button" tabindex="0" data-zone="dj" data-availability="unavailable" aria-label="DJ Section, from $1,200">
           <path d="M186 102 H270 V174 H144 Q126 174 132 156 L151 120 Q160 102 186 102 Z"/>
           <circle cx="187" cy="140" r="19"/>
           <circle cx="232" cy="140" r="19"/>
@@ -101,7 +104,7 @@
         </g>
 
         <!-- interactive VIP wall -->
-        <g class="floor-zone-svg" role="button" tabindex="0" data-zone="vip" aria-label="VIP Wall, from $750">
+        <g class="floor-zone-svg" role="button" tabindex="0" data-zone="vip" data-availability="available" aria-label="VIP Wall, from $750">
           <path d="M609 135 Q694 135 712 183 V316 Q692 352 609 352 Z"/>
           <rect x="631" y="168" width="54" height="46" rx="8"/>
           <rect x="631" y="230" width="54" height="46" rx="8"/>
@@ -110,14 +113,14 @@
         </g>
 
         <!-- interactive center booth -->
-        <g class="floor-zone-svg" role="button" tabindex="0" data-zone="center" aria-label="Center Booth, from $950">
+        <g class="floor-zone-svg" role="button" tabindex="0" data-zone="center" data-availability="limited" aria-label="Center Booth, from $950">
           <path d="M151 235 Q195 205 245 231 V358 Q193 383 151 352 Z"/>
           <rect x="171" y="263" width="52" height="64" rx="22"/>
           <text x="198" y="382" text-anchor="middle">CENTER BOOTH</text>
         </g>
 
         <!-- interactive main floor -->
-        <g class="floor-zone-svg active" role="button" tabindex="0" data-zone="main" aria-label="Main Floor, from $500">
+        <g class="floor-zone-svg active" role="button" tabindex="0" data-zone="main" data-availability="available" aria-label="Main Floor, from $500">
           <path d="M260 399 H559 Q578 399 578 418 V441 H240 V418 Q240 399 260 399 Z"/>
           <circle cx="304" cy="421" r="12"/>
           <circle cx="358" cy="421" r="12"/>
@@ -132,7 +135,9 @@
       </svg>
 
       <div class="floorplan-legend" aria-label="Floor plan legend">
-        <span><i class="legend-dot selected"></i>Selectable VIP section</span>
+        <span><i class="legend-dot selected"></i>Available</span>
+        <span><i class="legend-dot limited"></i>Limited</span>
+        <span><i class="legend-dot unavailable"></i>Booked</span>
         <span><i class="legend-dot neutral"></i>Venue area</span>
       </div>
     </div>
@@ -238,6 +243,7 @@
   </div>
 </section>
 
+<div class="shell vip-sales-note"><strong>High-value inquiry routing:</strong> Section choice, group size, budget, occasion and bottle preferences are captured before follow-up.</div>
 <section id="reserve" class="page-section shell">
   <div class="page-section-head"><div><p class="eyebrow gold">Reservation Request</p><h2>Start Your Table</h2></div><p>This form demonstrates qualification before a venue team follows up.</p></div>
   <div class="form-shell">

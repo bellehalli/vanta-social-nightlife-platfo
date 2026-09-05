@@ -52,30 +52,69 @@ const vibeSelect = document.querySelector('[data-vibe-filter]');
 const eventCards = [...document.querySelectorAll('[data-event-card]')];
 const emptyState = document.querySelector('[data-empty-state]');
 let activeRange = 'weekend';
+let exactDateFilter = null;
 
+function parseLocalDateKey(key){
+  const [y,m,d] = key.split('-').map(Number);
+  return new Date(y, m-1, d, 12, 0, 0);
+}
+function startOfToday(){
+  const n = new Date();
+  return new Date(n.getFullYear(), n.getMonth(), n.getDate(), 12, 0, 0);
+}
+function isSameDay(a,b){
+  return a.getFullYear()===b.getFullYear() && a.getMonth()===b.getMonth() && a.getDate()===b.getDate();
+}
+function inNamedRange(date, range){
+  const today = startOfToday();
+  const diffDays = Math.round((date - today) / 86400000);
+  if(range === 'today') return isSameDay(date, today);
+  if(range === 'seven') return diffDays >= 0 && diffDays <= 7;
+  if(range === 'month') return date.getFullYear()===today.getFullYear() && date.getMonth()===today.getMonth();
+  if(range === 'weekend'){
+    const day = today.getDay();
+    const toSat = (6 - day + 7) % 7;
+    const sat = new Date(today); sat.setDate(today.getDate()+toSat);
+    const sun = new Date(sat); sun.setDate(sat.getDate()+1);
+    return isSameDay(date,sat) || isSameDay(date,sun);
+  }
+  return true;
+}
 function applyEventFilters(){
   let visible = 0;
   const vibe = vibeSelect?.value || 'all';
+
   eventCards.forEach(card => {
-    const ranges = (card.dataset.range || '').split(' ');
+    const dateKey = card.dataset.date;
+    const cardDate = dateKey ? parseLocalDateKey(dateKey) : null;
     const cardVibe = card.dataset.vibe || '';
-    const rangeMatch = activeRange === 'all' || ranges.includes(activeRange);
+    const dateMatch = exactDateFilter
+      ? dateKey === exactDateFilter
+      : (cardDate ? inNamedRange(cardDate, activeRange) : true);
     const vibeMatch = vibe === 'all' || cardVibe === vibe;
-    const show = rangeMatch && vibeMatch;
+    const show = dateMatch && vibeMatch;
     card.hidden = !show;
     if(show) visible++;
   });
-  if(emptyState) emptyState.style.display = visible ? 'none' : 'block';
+
+  if(emptyState){
+    emptyState.style.display = visible ? 'none' : 'block';
+    emptyState.textContent = exactDateFilter
+      ? 'No listed Vanta event on that date.'
+      : 'No events match that date range and vibe yet.';
+  }
 }
 
 filterButtons.forEach(button => {
   button.addEventListener('click', () => {
-    activeRange = button.dataset.eventFilter || 'all';
+    exactDateFilter = null;
+    activeRange = button.dataset.eventFilter || 'weekend';
     filterButtons.forEach(btn => btn.classList.toggle('active', btn === button));
     applyEventFilters();
   });
 });
 vibeSelect?.addEventListener('change', applyEventFilters);
+applyEventFilters();
 
 // VIP interactive floorplan
 const vipData = {
@@ -113,12 +152,24 @@ function selectZone(key){
   if(floorplanStatus) floorplanStatus.textContent = `${info.name} selected. Tap another highlighted area to compare.`;
 }
 zones.forEach(zone => {
-  zone.addEventListener('click', () => selectZone(zone.dataset.zone));
+  zone.addEventListener('click', () => {
+    if (zone.dataset.availability === 'unavailable') {
+      const status = document.querySelector('[data-floorplan-status]');
+      if(status) status.textContent = 'That section is booked for this demo night. Choose another highlighted section.';
+      return;
+    }
+    selectZone(zone.dataset.zone);
+  });
   if (zone.matches('.floor-zone-svg')) {
     zone.addEventListener('keydown', event => {
       if (event.key === 'Enter' || event.key === ' ') {
         event.preventDefault();
-        selectZone(zone.dataset.zone);
+        if (zone.dataset.availability === 'unavailable') {
+          const status = document.querySelector('[data-floorplan-status]');
+          if(status) status.textContent = 'That section is booked for this demo night. Choose another highlighted section.';
+        } else {
+          selectZone(zone.dataset.zone);
+        }
       }
     });
   }
@@ -234,20 +285,9 @@ if (calendarRoot) {
           renderCalendar();
           renderCalendarResults(key);
 
-          const dateToRange = {
-            '2026-09-05':'today',
-            '2026-09-06':'weekend',
-            '2026-09-11':'seven',
-            '2026-09-18':'month'
-          };
-          const mappedRange = dateToRange[key];
-          if (mappedRange) {
-            activeRange = mappedRange;
-            filterButtons.forEach(button => {
-              button.classList.toggle('active', button.dataset.eventFilter === mappedRange);
-            });
-            applyEventFilters();
-          }
+          exactDateFilter = key;
+          filterButtons.forEach(button => button.classList.remove('active'));
+          applyEventFilters();
         });
       }
       grid.appendChild(btn);
@@ -315,6 +355,16 @@ bottleButtons.forEach(btn => {
     const name = btn.dataset.bottle;
     const price = Number(btn.dataset.price || 0);
     const current = selectedBottles.get(name) || {qty:0, price};
+    const totalQty = [...selectedBottles.values()].reduce((sum,item)=>sum+item.qty,0);
+    if (current.qty >= 6 || totalQty >= 12) {
+      toast?.classList.add('show');
+      if (toast) toast.textContent = totalQty >= 12 ? 'Demo builder limit reached: 12 bottles.' : 'Demo builder limit reached: 6 of one bottle.';
+      setTimeout(() => {
+        toast?.classList.remove('show');
+        if (toast) toast.textContent = 'Demo only — no information was submitted.';
+      }, 2600);
+      return;
+    }
     current.qty += 1;
     selectedBottles.set(name, current);
     btn.classList.add('added');

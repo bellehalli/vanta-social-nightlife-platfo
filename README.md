@@ -47,3 +47,17 @@ No build command or output directory is required.
 - Guest list, birthday and Insider capture
 - VIP reservation qualification form
 - Venue policies, parking and FAQ
+
+
+## Final sales-demo hardening
+- Dynamic Today / This Weekend / Next 7 Days / This Month filters
+- Exact calendar-date filtering
+- Empty-state handling for dates and vibes
+- Event scarcity / status labels
+- Sticky event conversion actions
+- VIP availability states (available / limited / booked)
+- Bottle quantity guardrails
+- Dedicated Private Events / Group Sales inquiry
+- Accessible skip links and labeled concierge controls
+- Favicon, robots.txt and Vercel security/cache headers
+- Portfolio demo remains noindex/nofollow and does not transmit form data
